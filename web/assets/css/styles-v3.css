@@ -1,0 +1,109 @@
+/* =========================================================
+   FEI World Cup Zagreb 2026 — V3 overrides
+   Alternating light sections on top of the dark base theme.
+   Sections with .section-light get white background + dark text.
+   ========================================================= */
+
+/* ---------- Light section — base ---------- */
+.section-light {
+  background: #FFFFFF !important;
+  color: #1A0A35;
+}
+.section-light h2,
+.section-light h3,
+.section-light h4 { color: #1A0A35; }
+
+.section-light .eyebrow {
+  color: #1676AD;
+  border-color: rgba(22,118,173,.3);
+}
+
+.section-light .prose p { color: rgba(26,10,53,.72); }
+
+/* ---------- Key facts ---------- */
+.section-light .key-facts {
+  border-top-color: rgba(26,10,53,.12);
+  border-bottom-color: rgba(26,10,53,.12);
+}
+.section-light .key-facts li { border-color: rgba(26,10,53,.12); }
+.section-light .kf-value { color: #1A0A35; }
+
+/* ---------- Stats ---------- */
+.section-light .stat {
+  background: #F5F1FD;
+  border-color: rgba(26,10,53,.1);
+}
+.section-light .stat-lbl { color: rgba(26,10,53,.6); }
+
+/* ---------- Info list ---------- */
+.section-light .info-list li {
+  border-color: rgba(26,10,53,.12);
+  color: rgba(26,10,53,.78);
+}
+.section-light .info-list li strong { color: #1676AD; }
+
+/* ---------- Map ---------- */
+.section-light .map-card {
+  border-color: rgba(26,10,53,.15);
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(26,10,53,.1);
+}
+.section-light .map-card iframe { filter: none; }
+
+/* ---------- Zone grid ---------- */
+.section-light .zone {
+  background: #F7F4FD;
+  border-color: rgba(26,10,53,.1);
+  color: #1A0A35;
+}
+
+/* ---------- Ghost button on light bg ---------- */
+.section-light .btn-ghost {
+  color: #2293D1;
+  border-color: rgba(34,147,209,.5);
+}
+.section-light .btn-ghost:hover {
+  background: rgba(34,147,209,.06);
+  border-color: #2293D1;
+  color: #1676AD;
+}
+
+/* ---------- Doc cards ---------- */
+.section-light .doc-card {
+  background: #F7F4FD;
+  border-color: rgba(26,10,53,.1);
+}
+.section-light .doc-card:hover {
+  background: #EDE6F8;
+  border-color: #2293D1;
+}
+.section-light .doc-card h3 { color: #1A0A35; }
+.section-light .doc-card p  { color: rgba(26,10,53,.62); }
+
+/* ---------- Contact block (riders section) ---------- */
+.section-light .contact-block {
+  background: #F5F1FD;
+  border-color: rgba(26,10,53,.14);
+}
+.section-light .contact-name { color: #1A0A35; }
+.section-light .contact-role { color: #1676AD; }
+.section-light .contact-meta a { color: rgba(26,10,53,.75); }
+.section-light .contact-meta a:hover { color: #2293D1; }
+
+/* ---------- Sponsors ---------- */
+.section-light .tier-title { color: #1676AD; }
+.section-light .logo-grid {
+  background: #F5F1FD;
+  border-color: rgba(26,10,53,.1);
+}
+.section-light .logo-cell {
+  background: #FFFFFF;
+  border-color: rgba(26,10,53,.15);
+  color: rgba(26,10,53,.38);
+}
+.section-light .callout {
+  background: #F5F1FD;
+  border-color: rgba(26,10,53,.1);
+  border-left-color: #2293D1;
+}
+.section-light .callout p { color: rgba(26,10,53,.72); }
