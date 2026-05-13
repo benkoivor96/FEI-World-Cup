@@ -96,6 +96,24 @@ body { background: var(--purple-800); }
 .brand-line-2,
 .footer-brand strong { font-style: normal; }
 
+/* ---------- Čitljivi elementi — Inter umjesto display fonta ----------
+   key facts vrijednosti i kontakt linkovi koriste Inter (već učitan)
+   jer su to informacijski sadržaji gdje je čitljivost važnija od stila
+   -------------------------------------------------------------------- */
+.kf-value {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.1rem;
+  letter-spacing: -.01em;
+}
+.contact-big {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -.02em;
+}
+
 /* ---------- Footer logo — transparentni negativ ---------- */
 .footer-logo-neg {
   width: 64px;
