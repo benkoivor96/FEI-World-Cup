@@ -96,14 +96,34 @@ body { background: var(--purple-800); }
 .brand-line-2,
 .footer-brand strong { font-style: normal; }
 
-/* ---------- Footer logo — negativ ----------
-   grayscale + visoki kontrast → binarizira sliku
-   invert → tamni dijelovi postaju bijeli, svjetli crni
-   screen blend → crna pozadina nestaje, bijeli logo ostaje
-   --------------------------------------------------------- */
+/* ---------- Footer logo — transparentni negativ ---------- */
 .footer-logo-neg {
-  width: 56px;
+  width: 64px;
   height: auto;
-  filter: grayscale(1) contrast(100) invert(1);
-  mix-blend-mode: screen;
+}
+
+/* ---------- Mobile fixes ---------- */
+
+/* Brand tekst uvijek vidljiv (base CSS ga skriva na 480px jer je bio uz logo) */
+@media (max-width: 480px) {
+  .brand-text { display: flex !important; }
+  .brand-line-1 { font-size: .65rem; }
+  .brand-line-2 { font-size: .9rem; }
+}
+
+/* Mobile nav — solidan taman background, čitljivi linkovi */
+@media (max-width: 768px) {
+  .primary-nav {
+    background: #2E1340;
+    border-left: 3px solid #2293D1;
+  }
+  .primary-nav a {
+    color: #FFFFFF;
+    font-size: 1.1rem;
+  }
+  .primary-nav .lang-switch {
+    border-color: rgba(255,255,255,.3);
+  }
+  /* Hamburger ikonica uvijek bijela */
+  .nav-toggle span { background: #FFFFFF; }
 }
