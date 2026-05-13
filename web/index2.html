@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="hr" data-lang="hr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FEI World Cup Zagreb 2026 — 70. Lipanjski turnir</title>
+<meta name="description" content="FEI World Cup u preponskom jahanju vraća se u Zagreb. 70. Lipanjski turnir, 11.–14. lipnja 2026., Hipodrom Zagreb." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+<style>
+/* =====================================================
+   Hagrid — slova only (unicode-range isključuje 0–9)
+   Browser pada na Oswald za znamenke
+   ===================================================== */
+@font-face {
+  font-family: "Hagrid";
+  src: url("assets/fonts/Hagrid-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("assets/fonts/Hagrid-Italic.ttf") format("truetype");
+  font-weight: 400; font-style: italic; font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("assets/fonts/Hagrid-Extrabold.ttf") format("truetype");
+  font-weight: 800; font-style: normal; font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("assets/fonts/Hagrid-Extrabold-Italic.ttf") format("truetype");
+  font-weight: 800; font-style: italic; font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+
+/* =====================================================
+   Tokens
+   ===================================================== */
+:root {
+  --purple-900: #2E1340;
+  --purple-800: #381844;
+  --purple-700: #401A4C;
+  --purple-600: #4F2A85;
+  --purple-500: #6B3FB0;
+  --cyan-500:   #2293D1;
+  --cyan-400:   #4DAEE0;
+  --cyan-300:   #7BC5E8;
+  --cream:      #F5EFE6;
+  --white:      #FFFFFF;
+  --ink:        #1A0A35;
+  --gold:       #E8C66A;
+  --radius-sm:  6px;
+  --radius:     12px;
+  --radius-lg:  20px;
+  --container:  1200px;
+  --ease:       cubic-bezier(.2,.7,.2,1);
+  --font-serif: "Hagrid", "Oswald", Impact, Arial, sans-serif;
+  --font-sans:  "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* =====================================================
+   Reset
+   ===================================================== */
+*,*::before,*::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--white);
+  background: var(--purple-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+/* =====================================================
+   Container
+   ===================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =====================================================
+   Typography
+   ===================================================== */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 .4em;
+}
+h1 { font-size: clamp(2.4rem, 6vw, 5.2rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.4rem); }
+h3 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); }
+h4 { font-size: 1.05rem; letter-spacing: 0; }
+p  { margin: 0 0 1em; }
+strong { font-weight: 700; }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: .78rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cyan-400);
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(123,197,232,.35);
+}
+.prose p { font-size: 1.02rem; color: rgba(255,255,255,.86); }
+.prose-wide { max-width: 920px; }
+
+/* =====================================================
+   Buttons
+   ===================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .95rem;
+  letter-spacing: .02em;
+  transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--cyan-500); color: var(--white); }
+.btn-primary:hover { background: var(--cyan-400); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--white); border-color: rgba(255,255,255,.4); }
+.btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,.08); transform: translateY(-2px); }
+
+/* =====================================================
+   Header / Nav
+   ===================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(56,24,68,.82);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-line-1 {
+  font-family: var(--font-sans);
+  font-size: .75rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cyan-400);
+}
+.brand-line-2 {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-style: normal;
+  font-size: 1.1rem;
+  letter-spacing: .02em;
+  color: var(--white);
+}
+
+.primary-nav { display: flex; align-items: center; gap: 28px; }
+.primary-nav > ul { display: flex; gap: 6px; flex-wrap: wrap; }
+.primary-nav a {
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: .88rem;
+  border-radius: 999px;
+  color: rgba(255,255,255,.78);
+  transition: color .2s var(--ease), background .2s var(--ease);
+}
+.primary-nav a:hover { color: var(--white); background: rgba(255,255,255,.06); }
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  font-size: .8rem;
+}
+.lang-switch span { color: rgba(255,255,255,.4); }
+.lang-btn {
+  background: transparent;
+  border: 0;
+  color: rgba(255,255,255,.6);
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+.lang-btn.is-active { color: var(--white); background: var(--cyan-500); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform .25s var(--ease), opacity .25s var(--ease);
+}
+
+/* =====================================================
+   Hero
+   ===================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 120px 0 80px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 80% at 80% 30%, rgba(34,147,209,.18), transparent 60%),
+    radial-gradient(80% 60% at 10% 90%, rgba(107,63,176,.32), transparent 60%),
+    linear-gradient(180deg, #2A1244 0%, #1A0A35 100%);
+  z-index: -3;
+}
+.hero-bg::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: url("assets/img/background.png") center/cover no-repeat;
+  opacity: .35;
+  mix-blend-mode: screen;
+}
+.hero-horse {
+  position: absolute;
+  right: -2%; bottom: -2%;
+  width: clamp(420px, 60vw, 900px);
+  z-index: -1;
+  pointer-events: none;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.5));
+}
+.hero-content { position: relative; max-width: 760px; }
+.hero-badges { margin-bottom: 22px; }
+.badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.badge-light { background: var(--white); color: var(--purple-800); }
+.hero-eyebrow {
+  font-size: .82rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cyan-300);
+  margin: 0 0 14px;
+}
+.hero-title { font-family: var(--font-serif); margin: 0 0 18px; line-height: .95; }
+.hero-title-small {
+  display: block;
+  font-size: clamp(.95rem, 1.4vw, 1.15rem);
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+  font-weight: 400;
+  font-family: var(--font-sans);
+  margin-bottom: 6px;
+}
+.hero-title-big {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(4rem, 11vw, 9.5rem);
+  color: var(--cyan-500);
+  letter-spacing: .015em;
+  line-height: 1;
+}
+.hero-date { font-size: 1.05rem; letter-spacing: .04em; color: rgba(255,255,255,.88); margin: 6px 0 18px; }
+.hero-lead { font-size: 1.08rem; max-width: 560px; color: rgba(255,255,255,.82); margin-bottom: 28px; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-scroll {
+  position: absolute;
+  bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  width: 26px; height: 42px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-radius: 14px;
+}
+.hero-scroll span {
+  position: absolute;
+  left: 50%; top: 8px;
+  width: 3px; height: 8px;
+  background: var(--white);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  animation: scroll-dot 1.8s var(--ease) infinite;
+}
+@keyframes scroll-dot {
+  0%   { opacity: 0; transform: translate(-50%, 0); }
+  30%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, 14px); }
+}
+
+/* =====================================================
+   Sections
+   ===================================================== */
+.section { padding: 110px 0; position: relative; }
+.section-intro     { background: var(--purple-900); }
+.section-about     { background: var(--purple-800); }
+.section-location  { background: var(--purple-900); }
+.section-programme { background: var(--purple-900); }
+.section-riders    { background: var(--purple-800); }
+.section-visitors  { background: var(--purple-900); }
+.section-sponsors  { background: var(--purple-900); }
+.section-media     { background: var(--purple-800); }
+.section-contact   { background: linear-gradient(180deg, var(--purple-900) 0%, #4F2A85 100%); }
+
+.section-head { margin-bottom: 48px; max-width: 720px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
+
+/* =====================================================
+   Key facts
+   ===================================================== */
+.key-facts {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.key-facts li {
+  padding: 22px 18px;
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+.key-facts li:last-child { border-right: 0; }
+.kf-label {
+  display: block;
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--cyan-400);
+  margin-bottom: 6px;
+}
+.kf-value {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.1rem;
+  letter-spacing: -.01em;
+  color: var(--white);
+}
+
+/* =====================================================
+   Stats
+   ===================================================== */
+.stats {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.stat {
+  padding: 28px 22px;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+.stat-num {
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-weight: 800;
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  line-height: 1;
+  color: var(--cyan-500);
+}
+.stat-lbl { margin-top: 8px; font-size: .9rem; color: rgba(255,255,255,.7); }
+
+/* =====================================================
+   Location
+   ===================================================== */
+.info-list { margin: 20px 0 24px; padding: 0; }
+.info-list li {
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(255,255,255,.15);
+  font-size: .95rem;
+  color: rgba(255,255,255,.85);
+}
+.info-list li strong { color: var(--cyan-300); margin-right: 8px; font-weight: 600; }
+.map-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  background: var(--purple-800);
+  height: 480px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.4);
+}
+.map-card iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: hue-rotate(180deg) invert(.85) saturate(.6); }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.venue-zones { margin-top: 56px; }
+.venue-zones h3 { margin-bottom: 18px; }
+.zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.zone {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+  font-size: .92rem;
+}
+.zone .dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--c, var(--cyan-500));
+  border: 2px solid rgba(255,255,255,.2);
+}
+
+/* =====================================================
+   Programme
+   ===================================================== */
+.schedule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 28px; }
+.day-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+  transition: transform .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+}
+.day-card:hover { transform: translateY(-6px); border-color: rgba(34,147,209,.6); background: rgba(34,147,209,.08); }
+.day-card.is-feature { background: linear-gradient(160deg, rgba(34,147,209,.22), rgba(107,63,176,.18)); border-color: rgba(34,147,209,.5); }
+.day-num {
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 4.2rem;
+  line-height: 1;
+  color: var(--cyan-500);
+}
+.day-name { margin-top: 6px; font-family: var(--font-serif); font-weight: 800; font-size: 1.3rem; }
+.day-month { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 18px; }
+.day-list { display: flex; flex-direction: column; gap: 8px; }
+.day-list li {
+  padding-left: 16px;
+  position: relative;
+  font-size: .92rem;
+  color: rgba(255,255,255,.86);
+}
+.day-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cyan-500);
+}
+.callout {
+  margin-top: 48px;
+  padding: 28px 32px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-left: 4px solid var(--cyan-500);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.callout p { margin: 0; }
+.callout-cta { text-align: center; justify-content: center; flex-direction: column; margin-top: 56px; }
+
+/* =====================================================
+   Riders / Docs
+   ===================================================== */
+.docs-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.doc-card {
+  display: block;
+  padding: 24px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius);
+  transition: transform .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+}
+.doc-card:hover { transform: translateY(-4px); border-color: var(--cyan-500); background: rgba(34,147,209,.06); }
+.doc-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--cyan-500);
+  color: var(--white);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+.doc-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+.doc-card p  { color: rgba(255,255,255,.7); font-size: .92rem; margin-bottom: 16px; }
+.doc-link { display: inline-flex; align-items: center; gap: 6px; color: var(--cyan-400); font-weight: 600; font-size: .88rem; }
+.doc-link::after { content: "→"; }
+.contact-block {
+  margin-top: 56px;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(34,147,209,.16), rgba(107,63,176,.16));
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius-lg);
+}
+.contact-row { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+.contact-name { font-family: var(--font-serif); font-style: normal; font-weight: 800; font-size: 1.4rem; }
+.contact-role { font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; color: var(--cyan-400); margin-top: 4px; }
+.contact-meta { display: flex; flex-direction: column; gap: 4px; text-align: right; }
+.contact-meta a { color: rgba(255,255,255,.9); }
+.contact-meta a:hover { color: var(--cyan-400); }
+
+/* =====================================================
+   Visitors
+   ===================================================== */
+.ticket-card {
+  position: relative;
+  padding: 36px 32px;
+  background: linear-gradient(160deg, var(--cyan-500) 0%, var(--purple-600) 100%);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 80px rgba(34,147,209,.25);
+  overflow: hidden;
+}
+.ticket-card::before {
+  content: "";
+  position: absolute; top: -40%; right: -40%;
+  width: 80%; height: 80%;
+  background: radial-gradient(circle, rgba(255,255,255,.18), transparent 70%);
+}
+.ticket-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--white);
+  color: var(--purple-800);
+  font-size: .7rem;
+  letter-spacing: .22em;
+  font-weight: 800;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+.ticket-card h3 { font-size: 1.6rem; }
+.ticket-card p  { color: rgba(255,255,255,.92); font-size: .98rem; }
+.vip-block { margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.25); position: relative; }
+.vip-title { font-family: var(--font-serif); font-style: normal; font-weight: 800; font-size: 1.5rem; margin-bottom: 6px; }
+.vip-contact { margin-top: 14px; font-size: .85rem; color: rgba(255,255,255,.85); }
+.vip-contact a { text-decoration: underline; text-decoration-color: rgba(255,255,255,.4); }
+.visitor-features { margin-top: 64px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.feat {
+  padding: 24px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius);
+}
+.feat-num { font-family: var(--font-serif); font-style: italic; color: var(--cyan-400); font-weight: 800; font-size: 1.3rem; margin-bottom: 14px; }
+.feat h4 { margin-bottom: 6px; font-size: 1.1rem; }
+.feat p  { color: rgba(255,255,255,.7); font-size: .9rem; margin: 0; }
+
+/* =====================================================
+   Sponsors
+   ===================================================== */
+.tier-title { margin: 56px 0 20px; font-size: .85rem; letter-spacing: .22em; text-transform: uppercase; color: var(--cyan-400); font-family: var(--font-sans); font-weight: 700; }
+.logo-grid { display: grid; gap: 18px; background: rgba(0,0,0,.25); padding: 32px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,.08); }
+.logo-grid-lg { grid-template-columns: repeat(4, 1fr); }
+.logo-grid-sm { grid-template-columns: repeat(4, 1fr); }
+.logo-cell {
+  aspect-ratio: 3/2;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.04);
+  border: 1px dashed rgba(255,255,255,.18);
+  border-radius: 8px;
+  color: rgba(255,255,255,.45);
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.logo-grid-sm .logo-cell { aspect-ratio: 3/1.4; font-size: .7rem; }
+
+/* =====================================================
+   Media
+   ===================================================== */
+.media-blocks { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; margin-top: 32px; }
+.media-block { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); padding: 28px; border-radius: var(--radius); }
+.media-block h3 { font-size: 1.3rem; }
+.dl-list { margin-top: 16px; display: flex; flex-direction: column; gap: 4px; }
+.dl-list a {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 14px;
+  background: rgba(255,255,255,.04);
+  border-radius: 8px;
+  font-size: .92rem;
+  transition: background .2s var(--ease);
+}
+.dl-list a:hover { background: rgba(34,147,209,.16); }
+.dl-list em { font-style: normal; font-size: .72rem; color: var(--cyan-400); letter-spacing: .12em; }
+.subhead { margin: 64px 0 20px; font-size: 1.6rem; }
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.news-card {
+  display: flex; flex-direction: column;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .3s var(--ease), border-color .3s var(--ease);
+}
+.news-card:hover { transform: translateY(-4px); border-color: var(--cyan-500); }
+.news-thumb { aspect-ratio: 16/10; }
+.news-body { padding: 20px 22px; }
+.news-source { display: inline-block; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--cyan-400); margin-bottom: 8px; }
+.news-card h4 { font-size: 1.05rem; line-height: 1.3; }
+
+/* =====================================================
+   Contact
+   ===================================================== */
+.section-contact .section-head { margin: 0 auto 56px; text-align: center; max-width: 720px; }
+.section-contact .section-head .eyebrow { display: inline-block; }
+.lede { font-size: 1.1rem; color: rgba(255,255,255,.8); max-width: 600px; margin: 0 auto; }
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+.contact-col {
+  padding: 36px 22px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius);
+}
+.contact-label { font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--cyan-400); margin: 0 0 12px; }
+.contact-big {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  letter-spacing: -.02em;
+  color: var(--white);
+  word-break: break-word;
+}
+.contact-big:hover { color: var(--cyan-400); }
+
+/* =====================================================
+   Footer
+   ===================================================== */
+.site-footer {
+  background: var(--purple-900);
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 64px 0 28px;
+}
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; align-items: start; }
+.footer-brand { display: flex; gap: 14px; align-items: center; }
+.footer-logo-neg { width: 64px; height: auto; }
+.footer-brand strong { display: block; font-family: var(--font-serif); font-style: normal; font-weight: 800; }
+.footer-brand span  { font-size: .82rem; color: rgba(255,255,255,.55); }
+.footer-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; }
+.footer-nav a { font-size: .92rem; color: rgba(255,255,255,.75); }
+.footer-nav a:hover { color: var(--cyan-400); }
+.footer-meta { text-align: right; }
+.meta-line { font-size: .88rem; color: rgba(255,255,255,.75); margin: 0 0 6px; }
+.meta-mute { color: rgba(255,255,255,.4); font-size: .78rem; margin-top: 14px; }
+
+/* =====================================================
+   Reveal on scroll
+   ===================================================== */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.is-visible { opacity: 1; transform: none; transition: none; }
+  .hero-scroll span { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* =====================================================
+   Section-light — bijele sekcije (tamni tekst)
+   ===================================================== */
+.section-light { background: #FFFFFF !important; color: #1A0A35; }
+.section-light h2,
+.section-light h3,
+.section-light h4 { color: #1A0A35; }
+.section-light .eyebrow { color: #1676AD; border-color: rgba(22,118,173,.3); }
+.section-light .prose p { color: rgba(26,10,53,.72); }
+.section-light .key-facts { border-top-color: rgba(26,10,53,.12); border-bottom-color: rgba(26,10,53,.12); }
+.section-light .key-facts li { border-color: rgba(26,10,53,.12); }
+.section-light .kf-value { color: #1A0A35; }
+.section-light .stat { background: #F5F1FD; border: 1px solid rgba(26,10,53,.1); }
+.section-light .stat-lbl { color: rgba(26,10,53,.6); }
+.section-light .info-list li { border-color: rgba(26,10,53,.12); color: rgba(26,10,53,.78); }
+.section-light .info-list li strong { color: #1676AD; }
+.section-light .map-card { border-color: rgba(26,10,53,.15); background: #fff; box-shadow: 0 20px 60px rgba(26,10,53,.1); }
+.section-light .map-card iframe { filter: none; }
+.section-light .zone { background: #F7F4FD; border-color: rgba(26,10,53,.1); color: #1A0A35; }
+.section-light .btn-ghost { color: #2293D1; border-color: rgba(34,147,209,.5); }
+.section-light .btn-ghost:hover { background: rgba(34,147,209,.06); border-color: #2293D1; color: #1676AD; }
+.section-light .doc-card { background: #F7F4FD; border-color: rgba(26,10,53,.1); }
+.section-light .doc-card:hover { background: #EDE6F8; border-color: #2293D1; }
+.section-light .doc-card h3 { color: #1A0A35; }
+.section-light .doc-card p  { color: rgba(26,10,53,.62); }
+.section-light .contact-block { background: #F5F1FD; border-color: rgba(26,10,53,.14); }
+.section-light .contact-name { color: #1A0A35; }
+.section-light .contact-role { color: #1676AD; }
+.section-light .contact-meta a { color: rgba(26,10,53,.75); }
+.section-light .contact-meta a:hover { color: #2293D1; }
+.section-light .tier-title { color: #1676AD; }
+.section-light .logo-grid { background: #F5F1FD; border-color: rgba(26,10,53,.1); }
+.section-light .logo-cell { background: #FFFFFF; border-color: rgba(26,10,53,.15); color: rgba(26,10,53,.38); }
+.section-light .callout { background: #F5F1FD; border-color: rgba(26,10,53,.1); border-left-color: #2293D1; }
+.section-light .callout p { color: rgba(26,10,53,.72); }
+
+/* =====================================================
+   Responsive
+   ===================================================== */
+@media (max-width: 1024px) {
+  .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+  .key-facts { grid-template-columns: repeat(2, 1fr); }
+  .key-facts li:nth-child(2) { border-right: 0; }
+  .key-facts li { border-bottom: 1px solid rgba(255,255,255,.12); }
+  .key-facts li:nth-last-child(-n+2) { border-bottom: 0; }
+  .stats, .visitor-features { grid-template-columns: repeat(2, 1fr); }
+  .schedule-grid { grid-template-columns: repeat(2, 1fr); }
+  .docs-grid { grid-template-columns: repeat(2, 1fr); }
+  .logo-grid-lg, .logo-grid-sm { grid-template-columns: repeat(3, 1fr); }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; }
+  .media-blocks { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; text-align: left; }
+  .footer-meta { text-align: left; }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 80px 0; }
+
+  /* Header — solidan bg, nema blura */
+  .site-header {
+    background: #2E1340 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .nav-row { padding-top: 20px; padding-bottom: 20px; min-height: 72px; }
+
+  /* Hamburger */
+  .nav-toggle { display: flex; z-index: 1001 !important; width: 44px; height: 44px; }
+  .nav-toggle span { background: #FFFFFF !important; }
+  .nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Nav overlay */
+  .primary-nav {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+    width: 100vw !important; height: 100vh !important; min-height: 100dvh !important;
+    background: #2E1340 !important;
+    z-index: 1000 !important;
+    overflow-y: auto !important;
+    border-top: 4px solid #2293D1 !important;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 80px 32px;
+    gap: 32px;
+    transform: translateX(100%);
+    transition: transform .35s var(--ease);
+  }
+  .primary-nav.is-open { transform: translateX(0) !important; }
+  .primary-nav > ul { flex-direction: column; align-items: flex-start; }
+  .primary-nav a { font-size: 1.15rem !important; color: #FFFFFF !important; font-weight: 500; padding: 8px 0; }
+  .primary-nav .lang-switch { border-color: rgba(255,255,255,.3); }
+
+  .hero { padding: 100px 0 60px; min-height: 90vh; }
+  .hero-horse { width: 90vw; right: -10%; opacity: .6; }
+  .key-facts { grid-template-columns: 1fr; }
+  .key-facts li { border-right: 0 !important; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .key-facts li:last-child { border-bottom: 0; }
+  .stats, .visitor-features, .schedule-grid, .docs-grid, .news-grid { grid-template-columns: 1fr; }
+  .logo-grid-lg, .logo-grid-sm { grid-template-columns: repeat(2, 1fr); }
+  .contact-row { flex-direction: column; align-items: flex-start; }
+  .contact-meta { text-align: left; }
+  .map-card { height: 360px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 18px; }
+  .brand-text { display: flex !important; }
+  .brand-line-1 { font-size: .68rem; letter-spacing: .18em; }
+  .brand-line-2 { font-size: 1rem; }
+  .hero-title-big { font-size: clamp(3.6rem, 18vw, 5rem); }
+}
+</style>
+</head>
+<body>
+
+<!-- ============== HEADER / NAV ============== -->
+<header class="site-header" id="top">
+  <div class="container nav-row">
+    <a href="#top" class="brand" aria-label="FEI World Cup Zagreb 2026">
+      <span class="brand-text">
+        <span class="brand-line-1">FEI World Cup</span>
+        <span class="brand-line-2">Zagreb 2026</span>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Otvori izbornik" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="primary-nav" id="primaryNav" aria-label="Glavna navigacija">
+      <ul>
+        <li><a href="#home" data-i18n="nav.home">Naslovnica</a></li>
+        <li><a href="#about" data-i18n="nav.about">O natjecanju</a></li>
+        <li><a href="#location" data-i18n="nav.location">Lokacija</a></li>
+        <li><a href="#programme" data-i18n="nav.programme">Program</a></li>
+        <li><a href="#riders" data-i18n="nav.riders">Za natjecatelje</a></li>
+        <li><a href="#visitors" data-i18n="nav.visitors">Za posjetitelje</a></li>
+        <li><a href="#sponsors" data-i18n="nav.sponsors">Sponzori</a></li>
+        <li><a href="#media" data-i18n="nav.media">Mediji</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Kontakt</a></li>
+      </ul>
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <button type="button" class="lang-btn is-active" data-lang-btn="hr">HR</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============== HERO ============== -->
+<section id="home" class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <img class="hero-horse" src="assets/img/horse-70.png" alt="" aria-hidden="true" />
+  <div class="container hero-content">
+    <div class="hero-badges">
+      <span class="badge badge-light" data-i18n="hero.freeEntry">SLOBODAN ULAZ ZA POSJETITELJE</span>
+    </div>
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">FEI WORLD CUP · CSI2*-W | CSI1* | CSIYH1*</p>
+    <h1 class="hero-title">
+      <span class="hero-title-small" data-i18n="hero.tournament">70. Lipanjski turnir</span>
+      <span class="hero-title-big">ZAGREB</span>
+    </h1>
+    <p class="hero-date" data-i18n="hero.date">11.–14. lipnja 2026.  ·  Hipodrom Zagreb</p>
+    <p class="hero-lead" data-i18n="hero.lead">FEI World Cup u preponskom jahanju vraća se u Zagreb nakon dvadeset godina. Četiri dana međunarodnih utakmica, otvoren za publiku.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#programme" data-i18n="hero.ctaProgramme">Program natjecanja</a>
+      <a class="btn btn-ghost" href="#visitors" data-i18n="hero.ctaVisitors">Za posjetitelje</a>
+    </div>
+  </div>
+  <a href="#about" class="hero-scroll" aria-label="Scroll"><span></span></a>
+</section>
+
+<!-- ============== INTRO ============== -->
+<section id="intro" class="section section-intro section-light">
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <p class="eyebrow" data-i18n="intro.eyebrow">11.–14. lipnja 2026.</p>
+        <h2 data-i18n="intro.title">FEI World Cup u preponskom jahanju vraća se u Zagreb</h2>
+      </div>
+      <div class="prose">
+        <p data-i18n="intro.p1">Zagreb će od 11. do 14. lipnja ponovno biti domaćin međunarodnog preponskog natjecanja iz kalendara Fédération Équestre Internationale, čime se nakon dvadeset godina u grad vraća razina FEI World Cupa. Natjecanje se održava na zagrebačkom Hipodromu u sklopu 70. Lipanjskog turnira i tijekom četiri dana okuplja međunarodnu konkurenciju jahača i konja koji u Zagrebu osvajaju bodove za ukupni poredak i plasman u završnicu sezone.</p>
+        <p data-i18n="intro.p2">Program uključuje kategorije CSI2*-W, CSI1* i CSIYH1*, raspoređene kroz više natjecateljskih dana, dok je središnji događaj Grand Prix utakmica za Pehar Grada Zagreba. Očekuje se dolazak natjecatelja iz više od petnaest zemalja, zajedno s njihovim timovima i konjima, što Lipanjski turnir ponovno pozicionira među relevantna međunarodna konjička događanja u ovom dijelu Europe.</p>
+        <p data-i18n="intro.p3">Održavanje natjecanja ove razine nadovezuje se na dugu tradiciju Lipanjskog turnira, jednog od najstarijih konjičkih natjecanja u Hrvatskoj, ali istovremeno postavlja i jasne organizacijske zahtjeve — od infrastrukture i uvjeta na terenu do provedbe tehničkih i sigurnosnih standarda koje propisuje FEI. Upravo ta kombinacija kontinuiteta i zahtjevnosti definira ovogodišnje izdanje turnira.</p>
+        <p data-i18n="intro.p4">Uz sportski program, događanje uključuje i sadržaje za posjetitelje, a ulaz na natjecanje bit će besplatan.</p>
+      </div>
+    </div>
+    <ul class="key-facts" aria-label="Key facts">
+      <li><span class="kf-label" data-i18n="facts.tournament">Turnir</span><span class="kf-value">70. Lipanjski turnir</span></li>
+      <li><span class="kf-label" data-i18n="facts.categories">Kategorije</span><span class="kf-value">CSI2*-W · CSI1* · CSIYH1*</span></li>
+      <li><span class="kf-label" data-i18n="facts.dates">Termin</span><span class="kf-value" data-i18n="facts.datesValue">11.–14. lipnja 2026.</span></li>
+      <li><span class="kf-label" data-i18n="facts.venue">Lokacija</span><span class="kf-value" data-i18n="facts.venueValue">Hipodrom, Zagreb · Hrvatska</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============== ABOUT ============== -->
+<section id="about" class="section section-about">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="about.eyebrow">O natjecanju</p>
+      <h2 data-i18n="about.title">O Lipanjskom turniru</h2>
+    </header>
+    <div class="prose prose-wide">
+      <p data-i18n="about.p1">Lipanjski turnir održava se na zagrebačkom Hipodromu više od sedam desetljeća i jedno je od najdugovječnijih konjičkih natjecanja u Hrvatskoj. Kroz to vrijeme bio je stalni dio domaćeg sportskog kalendara i mjesto na kojem su domaći jahači redovito nastupali uz međunarodnu konkurenciju.</p>
+      <p data-i18n="about.p2">Za mnoge jahače upravo je ovdje počinjao prvi ozbiljniji iskorak prema međunarodnoj sceni, dok je publici omogućavao kontinuirano praćenje preponskog jahanja. Ta dvostruka uloga — razvoj domaćih sportaša i prisutnost stranih natjecatelja — određivala je turnir kroz godine.</p>
+      <p data-i18n="about.p3">Sedamdeseto izdanje, koje se održava od 11. do 14. lipnja 2026., vraća u Zagreb FEI World Cup razinu natjecanja nakon dvadeset godina. Time se program turnira pomiče prema zahtjevnijim utakmicama, s višim parkurima i tehnički složenijim postavama koje traže veću preciznost i iskustvo.</p>
+      <p data-i18n="about.p4">Program uključuje kategorije CSI2*-W, CSI1* i CSIYH1*, raspoređene kroz četiri dana, dok je Grand Prix za Pehar Grada Zagreba središnja utakmica turnira. Lipanjski turnir se pritom nastavlja u svom prepoznatljivom formatu, ali ove godine jasno ulazi u okvir natjecanja više razine.</p>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">70</div>
+        <div class="stat-lbl" data-i18n="about.stat1">izdanje turnira</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-lbl" data-i18n="about.stat2">natjecateljska dana</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-lbl" data-i18n="about.stat3">godina od zadnjeg World Cupa</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-lbl" data-i18n="about.stat4">zemalja sudionica</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== LOCATION ============== -->
+<section id="location" class="section section-location section-light">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="location.eyebrow">Lokacija</p>
+      <h2 data-i18n="location.title">Hipodrom Zagreb</h2>
+    </header>
+    <div class="grid-2">
+      <div class="prose">
+        <p data-i18n="location.p1">Natjecanje se održava na zagrebačkom Hipodromu.</p>
+        <p data-i18n="location.p2">Pristup lokaciji tijekom turnira organiziran je kroz označene ulaze i zone kretanja, uz privremenu regulaciju prometa i parkiranja u neposrednoj blizini. Preporučuje se pratiti upute na licu mjesta i planirati dolazak s obzirom na očekivanu posjećenost.</p>
+        <p data-i18n="location.p3">Karta prostora i upute za dolazak dostupni su na ovoj stranici.</p>
+        <ul class="info-list">
+          <li><strong data-i18n="location.address">Adresa:</strong> Hipodrom Zagreb, Dom sportova ulica · Zagreb</li>
+          <li><strong data-i18n="location.entry">Glavni ulaz:</strong> <span data-i18n="location.entryValue">označen za posjetitelje — pratite upute na lokaciji</span></li>
+          <li><strong data-i18n="location.parking">Parking:</strong> <span data-i18n="location.parkingValue">privremena regulacija u neposrednoj blizini</span></li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Hipodrom+Zagreb" target="_blank" rel="noopener" data-i18n="location.navigate">Otvori navigaciju</a>
+          <a class="btn btn-ghost" href="#" data-i18n="location.mapPdf">Karta prostora (PDF)</a>
+        </div>
+      </div>
+      <div class="map-card">
+        <iframe title="Hipodrom Zagreb — Google Maps" src="https://www.google.com/maps?q=Hipodrom+Zagreb&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="venue-zones">
+      <h3 data-i18n="location.zones">Zone na lokaciji</h3>
+      <div class="zone-grid">
+        <div class="zone"><span class="dot" style="--c:#2293D1"></span><span data-i18n="zone.arena">Glavna arena</span></div>
+        <div class="zone"><span class="dot" style="--c:#7BC5E8"></span><span data-i18n="zone.warmup">Warm-up</span></div>
+        <div class="zone"><span class="dot" style="--c:#FFFFFF"></span><span data-i18n="zone.stables">Staje</span></div>
+        <div class="zone"><span class="dot" style="--c:#C9A8FF"></span><span data-i18n="zone.parking">Parking</span></div>
+        <div class="zone"><span class="dot" style="--c:#F5C04A"></span><span data-i18n="zone.entry">Ulazi za posjetitelje</span></div>
+        <div class="zone"><span class="dot" style="--c:#FF6B6B"></span><span data-i18n="zone.showoffice">Show office</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PROGRAMME ============== -->
+<section id="programme" class="section section-programme">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="programme.eyebrow">Program</p>
+      <h2 data-i18n="programme.title">Detaljan raspored uskoro</h2>
+    </header>
+    <div class="prose prose-wide">
+      <p data-i18n="programme.p1">Program uključuje međunarodne utakmice u kategorijama CSI2*-W, CSI1* i CSIYH1*, uključujući World Cup kvalifikacijsku razinu te natjecanja za mlade konje. Uz sportski dio, tijekom četiri dana održavanja priprema se i opsežan prateći program za posjetitelje, s naglaskom na sadržaje za djecu i obitelji, kao i dodatne aktivnosti u okviru Sport Festa.</p>
+    </div>
+    <div class="schedule-grid">
+      <article class="day-card">
+        <div class="day-num">11</div>
+        <div class="day-name" data-i18n="day.thursday">Četvrtak</div>
+        <div class="day-month" data-i18n="month.june">Lipanj 2026.</div>
+        <ul class="day-list">
+          <li data-i18n="day1.l1">CSIYH1* — mladi konji</li>
+          <li data-i18n="day1.l2">CSI1* — uvodne utakmice</li>
+          <li data-i18n="day1.l3">Otvaranje turnira</li>
+        </ul>
+      </article>
+      <article class="day-card">
+        <div class="day-num">12</div>
+        <div class="day-name" data-i18n="day.friday">Petak</div>
+        <div class="day-month" data-i18n="month.june">Lipanj 2026.</div>
+        <ul class="day-list">
+          <li data-i18n="day2.l1">CSI2*-W — kvalifikacije</li>
+          <li data-i18n="day2.l2">CSI1* / CSIYH1*</li>
+          <li data-i18n="day2.l3">Večernji program</li>
+        </ul>
+      </article>
+      <article class="day-card is-feature">
+        <div class="day-num">13</div>
+        <div class="day-name" data-i18n="day.saturday">Subota</div>
+        <div class="day-month" data-i18n="month.june">Lipanj 2026.</div>
+        <ul class="day-list">
+          <li data-i18n="day3.l1"><strong>Grand Prix — Pehar Grada Zagreba</strong></li>
+          <li data-i18n="day3.l2">FEI World Cup ključna utakmica</li>
+          <li data-i18n="day3.l3">Svečana dodjela nagrada</li>
+        </ul>
+      </article>
+      <article class="day-card">
+        <div class="day-num">14</div>
+        <div class="day-name" data-i18n="day.sunday">Nedjelja</div>
+        <div class="day-month" data-i18n="month.june">Lipanj 2026.</div>
+        <ul class="day-list">
+          <li data-i18n="day4.l1">CSI2*-W finale</li>
+          <li data-i18n="day4.l2">Završne utakmice CSI1*</li>
+          <li data-i18n="day4.l3">Zatvaranje turnira</li>
+        </ul>
+      </article>
+    </div>
+    <div class="callout">
+      <p data-i18n="programme.soon"><strong>Uskoro objavljujemo:</strong> raspored utakmica, satnicu, službeni program, informacije za publiku i detalje o popratnim sadržajima.</p>
+      <a class="btn btn-ghost" href="#contact" data-i18n="programme.notify">Obavijesti me</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== RIDERS ============== -->
+<section id="riders" class="section section-riders section-light">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="riders.eyebrow">Za natjecatelje</p>
+      <h2 data-i18n="riders.title">Sve informacije za jahače i timove</h2>
+    </header>
+    <div class="prose prose-wide">
+      <p data-i18n="riders.p1">Zagrebački Hipodrom nalazi se unutar urbanog tkiva grada, na južnoj obali Save, svega nekoliko minuta vožnje od centra. Takva pozicija relativno je rijetka za konjičke objekte ove veličine i omogućuje izravan pristup gradskoj infrastrukturi, ali istovremeno znači da se dolazak i logistika odvijaju u uvjetima gradskog prometa, uključujući mostove preko Save koji u vršnim satima mogu biti opterećeni.</p>
+      <p data-i18n="riders.p2">Prostor Hipodroma proteže se uz rijeku i obuhvaća otvorene površine koje se za potrebe turnira organiziraju u natjecateljsku arenu, zagrijavanje i stajski dio. Zagrebačko konjičko okruženje čini mreža klubova u Zagrebu i okolici, s više od deset aktivnih sportskih klubova i kontinuiranim kalendarom natjecanja tijekom godine.</p>
+      <p data-i18n="riders.p3">Smještaj konja organiziran je u montažnim boksovima unutar hipodromskog prostora, uz prethodnu rezervaciju kroz prijavni proces. Show office nalazi se u neposrednoj blizini natjecateljske arene i staja te predstavlja referentnu točku za sve operativne informacije po dolasku.</p>
+      <p data-i18n="riders.p4">Zagreb kao domaćin nudi razvijenu hotelsku i ugostiteljsku infrastrukturu. U neposrednoj blizini Hipodroma, u Novom Zagrebu, nalaze se hoteli različitih kategorija, dok je centar grada udaljen desetak minuta vožnje i nudi širi izbor smještaja, restorana i pratećih sadržaja.</p>
+    </div>
+    <div class="docs-grid">
+      <a class="doc-card" href="#" data-doc>
+        <span class="doc-tag">PDF</span>
+        <h3 data-i18n="docs.schedule">FEI Schedule (propozicije)</h3>
+        <p data-i18n="docs.scheduleD">Službene propozicije natjecanja — uvjeti, kategorije, satnica.</p>
+        <span class="doc-link" data-i18n="docs.view">Pregledaj</span>
+      </a>
+      <a class="doc-card" href="#" data-doc>
+        <span class="doc-tag">PDF</span>
+        <h3 data-i18n="docs.entries">Prijave i rokovi</h3>
+        <p data-i18n="docs.entriesD">Postupak prijave (entries) i rokovi za nominacije i definitive entries.</p>
+        <span class="doc-link" data-i18n="docs.view">Pregledaj</span>
+      </a>
+      <a class="doc-card" href="#" data-doc>
+        <span class="doc-tag">PDF</span>
+        <h3 data-i18n="docs.vet">Veterinarski uvjeti</h3>
+        <p data-i18n="docs.vetD">Dokumentacija, uvoz konja, pregled po dolasku.</p>
+        <span class="doc-link" data-i18n="docs.view">Pregledaj</span>
+      </a>
+      <a class="doc-card" href="#" data-doc>
+        <span class="doc-tag">PDF</span>
+        <h3 data-i18n="docs.tech">Tehničke informacije</h3>
+        <p data-i18n="docs.techD">Arena, podloga, warm-up uvjeti, dimenzije.</p>
+        <span class="doc-link" data-i18n="docs.view">Pregledaj</span>
+      </a>
+      <a class="doc-card" href="#" data-doc>
+        <span class="doc-tag">MAP</span>
+        <h3 data-i18n="docs.map">Karta Hipodroma</h3>
+        <p data-i18n="docs.mapD">Označene zone: arena, warm-up, staje, parking, ulazi, show office.</p>
+        <span class="doc-link" data-i18n="docs.view">Pregledaj</span>
+      </a>
+      <a class="doc-card" href="#" data-doc>
+        <span class="doc-tag">INFO</span>
+        <h3 data-i18n="docs.checkin">Check-in konja</h3>
+        <p data-i18n="docs.checkinD">Satnica dolaska, prijem konja, ulaz u staje.</p>
+        <span class="doc-link" data-i18n="docs.view">Pregledaj</span>
+      </a>
+    </div>
+    <div class="contact-block">
+      <h3 data-i18n="riders.contactTitle">Rezervacija boksova i operativne informacije</h3>
+      <div class="contact-row">
+        <div>
+          <div class="contact-name">[Ime i prezime]</div>
+          <div class="contact-role" data-i18n="riders.showoffice">Show office</div>
+        </div>
+        <div class="contact-meta">
+          <a href="tel:+385000000000" data-i18n="riders.phone">+385 (0) — telefon</a>
+          <a href="mailto:showoffice@worldcupzagreb.com">showoffice@worldcupzagreb.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== VISITORS ============== -->
+<section id="visitors" class="section section-visitors">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="visitors.eyebrow">Za posjetitelje</p>
+      <h2 data-i18n="visitors.title">Hipodrom otvoren za publiku</h2>
+    </header>
+    <div class="grid-2">
+      <div class="prose">
+        <p data-i18n="visitors.p1">Lipanjski turnir otvara zagrebački Hipodrom publici i vraća međunarodno preponsko jahanje u prostor grada, na nekoliko minuta od centra Zagreba. Tijekom četiri dana natjecanja Hipodrom postaje mjesto na kojem se prati vrhunski sport, ali i provodi vrijeme na otvorenom, bez formalnosti koje inače prate ovakva događanja.</p>
+        <p data-i18n="visitors.p2">Natjecanja se odvijaju kroz dan, uz izmjenu ritma — od tehnički zahtjevnih utakmica do završnica koje se odlučuju u sekundama i okupljaju publiku oko arene. Upravo taj trenutak, kada nekoliko najboljih ulazi u završnicu, definira atmosferu turnira.</p>
+        <p data-i18n="visitors.p3">Uz sportski program, prostor Hipodroma tijekom dana funkcionira kao otvorena zona za posjetitelje. U suradnji sa Sport Festom prisutni su partneri i izlagači sportske opreme, uz prodajne štandove i sadržaj vezan uz aktivan način života. Gastro zona prati program tijekom cijelog dana.</p>
+        <p data-i18n="visitors.p4">Dio sadržaja namijenjen je djeci — dječji kutci, šetnje na konjima i druženje s maskotom Purgijem organizirani su u odvojenom dijelu prostora.</p>
+        <p data-i18n="visitors.p5">U večernjim satima program se nastavlja u opuštenijem formatu, uz party i slobodan ulaz.</p>
+      </div>
+      <aside class="ticket-card">
+        <div class="ticket-badge" data-i18n="visitors.freeBadge">SLOBODAN ULAZ</div>
+        <h3 data-i18n="visitors.ticketTitle">Ulaz na natjecanje je besplatan</h3>
+        <p data-i18n="visitors.ticketDesc">Ulaz na natjecanje i večernji party program je besplatan. Za posjetitelje koji žele pratiti natjecanje iz izdvojenog prostora, dostupna je VIP zona uz plaćanje.</p>
+        <div class="vip-block">
+          <div class="vip-title" data-i18n="visitors.vipTitle">VIP zona</div>
+          <p data-i18n="visitors.vipDesc">Izdvojen prostor s pogledom na arenu, F&amp;B uključen.</p>
+          <a class="btn btn-primary" href="#" data-i18n="visitors.vipBuy">Kupi VIP ulaznicu</a>
+          <p class="vip-contact">
+            <span data-i18n="visitors.vipContact">VIP kontakt:</span> [ime i prezime] · <a href="tel:+385">[telefon]</a> · <a href="mailto:vip@worldcupzagreb.com">vip@worldcupzagreb.com</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+    <div class="visitor-features">
+      <div class="feat">
+        <div class="feat-num">01</div>
+        <h4 data-i18n="vf.sport">Vrhunski sport</h4>
+        <p data-i18n="vf.sportD">FEI World Cup utakmice i Grand Prix za Pehar Grada Zagreba.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-num">02</div>
+        <h4 data-i18n="vf.sportfest">Sport Fest</h4>
+        <p data-i18n="vf.sportfestD">Izlagači, sportska oprema, aktivnosti i sadržaji aktivnog načina života.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-num">03</div>
+        <h4 data-i18n="vf.kids">Za djecu</h4>
+        <p data-i18n="vf.kidsD">Dječji kutci, šetnje na konjima i maskota Purgi.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-num">04</div>
+        <h4 data-i18n="vf.gastro">Gastro zona</h4>
+        <p data-i18n="vf.gastroD">Hrana i piće tijekom cijelog dana, do večernjeg party programa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SPONSORS ============== -->
+<section id="sponsors" class="section section-sponsors section-light">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="sponsors.eyebrow">Sponzori i partneri</p>
+      <h2 data-i18n="sponsors.title">Hvala onima koji čine turnir mogućim</h2>
+    </header>
+    <div class="prose prose-wide">
+      <p data-i18n="sponsors.p1">Povratak FEI World Cup natjecanja u Zagreb važan je sportski i organizacijski iskorak koji ne bi bio moguć bez podrške partnera, sponzora i institucija koje prepoznaju vrijednost međunarodnog sporta, tradicije i razvoja konjičkog sporta u Hrvatskoj.</p>
+    </div>
+    <h3 class="tier-title" data-i18n="sponsors.tier1">Glavni sponzori</h3>
+    <div class="logo-grid logo-grid-lg">
+      <div class="logo-cell" aria-label="Sponsor placeholder"><span data-i18n="sponsors.your">Vaš logotip</span></div>
+      <div class="logo-cell" aria-label="Sponsor placeholder"><span data-i18n="sponsors.your">Vaš logotip</span></div>
+      <div class="logo-cell" aria-label="Sponsor placeholder"><span data-i18n="sponsors.your">Vaš logotip</span></div>
+      <div class="logo-cell" aria-label="Sponsor placeholder"><span data-i18n="sponsors.your">Vaš logotip</span></div>
+    </div>
+    <h3 class="tier-title" data-i18n="sponsors.tier2">Tehnički partneri</h3>
+    <div class="logo-grid logo-grid-sm">
+      <div class="logo-cell"><span data-i18n="sponsors.partner">Partner</span></div>
+      <div class="logo-cell"><span data-i18n="sponsors.partner">Partner</span></div>
+      <div class="logo-cell"><span data-i18n="sponsors.partner">Partner</span></div>
+      <div class="logo-cell"><span data-i18n="sponsors.partner">Partner</span></div>
+      <div class="logo-cell"><span data-i18n="sponsors.partner">Partner</span></div>
+      <div class="logo-cell"><span data-i18n="sponsors.partner">Partner</span></div>
+      <div class="logo-cell"><span data-i18n="sponsors.partner">Partner</span></div>
+      <div class="logo-cell"><span data-i18n="sponsors.partner">Partner</span></div>
+    </div>
+    <div class="callout callout-cta">
+      <p data-i18n="sponsors.cta">Zainteresiranim partnerima dostupne su sponzorske mogućnosti kroz različite razine vidljivosti i aktivacije.</p>
+      <a class="btn btn-primary" href="mailto:partners@worldcupzagreb.com" data-i18n="sponsors.contact">partners@worldcupzagreb.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MEDIA ============== -->
+<section id="media" class="section section-media">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="media.eyebrow">Mediji</p>
+      <h2 data-i18n="media.title">Akreditacije, materijali, galerija</h2>
+    </header>
+    <div class="prose prose-wide">
+      <p data-i18n="media.p1">Praćenje Lipanjskog turnira na razini FEI World Cup natjecanja organizira se uz prethodnu najavu dolaska i, prema potrebi, akreditaciju. Medijima je omogućen pristup natjecanju, izjavama i foto materijalima u skladu s pravilima događanja i organizacijom na terenu.</p>
+    </div>
+    <div class="media-blocks">
+      <article class="media-block">
+        <h3 data-i18n="media.pressTitle">Press materijali</h3>
+        <p data-i18n="media.pressDesc">Službena priopćenja i objave za preuzimanje.</p>
+        <ul class="dl-list">
+          <li><a href="#"><span data-i18n="media.release1">Priopćenje — najava turnira</span><em>.docx</em></a></li>
+          <li><a href="#"><span data-i18n="media.release2">Press kit — opće informacije</span><em>.pdf</em></a></li>
+          <li><a href="#"><span data-i18n="media.release3">Fact sheet — FEI World Cup</span><em>.pdf</em></a></li>
+        </ul>
+      </article>
+      <article class="media-block">
+        <h3 data-i18n="media.photosTitle">Fotografije</h3>
+        <p data-i18n="media.photosDesc">Visokorezolucijska galerija za uredničku upotrebu.</p>
+        <a class="btn btn-ghost" href="#" data-i18n="media.download">Preuzmi ZIP galeriju</a>
+      </article>
+    </div>
+    <h3 class="subhead" data-i18n="media.aboutUs">Mediji o nama</h3>
+    <div class="news-grid">
+      <a class="news-card" href="#" target="_blank" rel="noopener">
+        <div class="news-thumb" style="background:linear-gradient(135deg,#2D1547,#4F2A85)"></div>
+        <div class="news-body"><span class="news-source">Index.hr</span><h4 data-i18n="news.t1">FEI World Cup vraća se u Zagreb nakon dvadeset godina</h4></div>
+      </a>
+      <a class="news-card" href="#" target="_blank" rel="noopener">
+        <div class="news-thumb" style="background:linear-gradient(135deg,#1E2553,#2293D1)"></div>
+        <div class="news-body"><span class="news-source">Sportske novosti</span><h4 data-i18n="news.t2">70. Lipanjski turnir: Grand Prix za Pehar Grada Zagreba</h4></div>
+      </a>
+      <a class="news-card" href="#" target="_blank" rel="noopener">
+        <div class="news-thumb" style="background:linear-gradient(135deg,#4F2A85,#2293D1)"></div>
+        <div class="news-body"><span class="news-source">HRT</span><h4 data-i18n="news.t3">Hipodrom domaćin međunarodne preponske scene</h4></div>
+      </a>
+    </div>
+    <div class="contact-block">
+      <h3 data-i18n="media.contactTitle">Akreditacije i upiti</h3>
+      <div class="contact-row">
+        <div>
+          <div class="contact-name">[Ime i prezime]</div>
+          <div class="contact-role" data-i18n="media.role">PR / Mediji</div>
+        </div>
+        <div class="contact-meta">
+          <a href="tel:+385" data-i18n="media.phone">+385 (0) — telefon</a>
+          <a href="mailto:media@worldcupzagreb.com">media@worldcupzagreb.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CONTACT ============== -->
+<section id="contact" class="section section-contact">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="contact.eyebrow">Kontakt</p>
+      <h2 data-i18n="contact.title">Zagrebački konjički savez</h2>
+      <p class="lede" data-i18n="contact.lede">Organizator 70. Lipanjskog turnira i FEI World Cup natjecanja u Zagrebu.</p>
+    </header>
+    <div class="contact-grid">
+      <div class="contact-col">
+        <p class="contact-label" data-i18n="contact.emailLabel">E-mail</p>
+        <a class="contact-big" href="mailto:info@worldcupzagreb.com">info@worldcupzagreb.com</a>
+      </div>
+      <div class="contact-col">
+        <p class="contact-label" data-i18n="contact.phoneLabel">Telefon</p>
+        <a class="contact-big" href="tel:+385" data-i18n="contact.phoneValue">+385 (0) — kontakt</a>
+      </div>
+      <div class="contact-col">
+        <p class="contact-label" data-i18n="contact.webLabel">Web</p>
+        <a class="contact-big" href="https://zgkonji.hr" target="_blank" rel="noopener">zgkonji.hr</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/img/zks-logo-neg.png" alt="Zagrebački konjički savez" class="footer-logo-neg" />
+          <div>
+            <strong>Zagrebački konjički savez</strong>
+            <span data-i18n="footer.org">Organizator</span>
+          </div>
+        </div>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="footer-nav">
+          <li><a href="#about" data-i18n="nav.about">O natjecanju</a></li>
+          <li><a href="#programme" data-i18n="nav.programme">Program</a></li>
+          <li><a href="#riders" data-i18n="nav.riders">Za natjecatelje</a></li>
+          <li><a href="#visitors" data-i18n="nav.visitors">Za posjetitelje</a></li>
+          <li><a href="#sponsors" data-i18n="nav.sponsors">Sponzori</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="footer-meta">
+        <p class="meta-line">FEI World Cup · CSI2*-W · CSI1* · CSIYH1*</p>
+        <p class="meta-line" data-i18n="footer.date">11.–14. lipnja 2026. · Hipodrom Zagreb</p>
+        <p class="meta-line meta-mute">© 2026 Zagrebački konjički savez. <span data-i18n="footer.rights">Sva prava pridržana.</span></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Mobile nav */
+  const navToggle = document.getElementById('navToggle');
+  const primaryNav = document.getElementById('primaryNav');
+  if (navToggle && primaryNav) {
+    navToggle.addEventListener('click', function () {
+      const open = primaryNav.classList.toggle('is-open');
+      navToggle.classList.toggle('is-open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    primaryNav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        primaryNav.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  /* i18n */
+  const i18n = {
+    hr: {
+      'nav.home':'Naslovnica','nav.about':'O natjecanju','nav.location':'Lokacija','nav.programme':'Program','nav.riders':'Za natjecatelje','nav.visitors':'Za posjetitelje','nav.sponsors':'Sponzori','nav.media':'Mediji','nav.contact':'Kontakt',
+      'hero.freeEntry':'SLOBODAN ULAZ ZA POSJETITELJE','hero.eyebrow':'FEI WORLD CUP · CSI2*-W | CSI1* | CSIYH1*','hero.tournament':'70. Lipanjski turnir','hero.date':'11.–14. lipnja 2026.  ·  Hipodrom Zagreb','hero.lead':'FEI World Cup u preponskom jahanju vraća se u Zagreb nakon dvadeset godina. Četiri dana međunarodnih utakmica, otvoren za publiku.','hero.ctaProgramme':'Program natjecanja','hero.ctaVisitors':'Za posjetitelje',
+      'intro.eyebrow':'11.–14. lipnja 2026.','intro.title':'FEI World Cup u preponskom jahanju vraća se u Zagreb','intro.p1':'Zagreb će od 11. do 14. lipnja ponovno biti domaćin međunarodnog preponskog natjecanja iz kalendara Fédération Équestre Internationale, čime se nakon dvadeset godina u grad vraća razina FEI World Cupa. Natjecanje se održava na zagrebačkom Hipodromu u sklopu 70. Lipanjskog turnira i tijekom četiri dana okuplja međunarodnu konkurenciju jahača i konja koji u Zagrebu osvajaju bodove za ukupni poredak i plasman u završnicu sezone.','intro.p2':'Program uključuje kategorije CSI2*-W, CSI1* i CSIYH1*, raspoređene kroz više natjecateljskih dana, dok je središnji događaj Grand Prix utakmica za Pehar Grada Zagreba. Očekuje se dolazak natjecatelja iz više od petnaest zemalja, zajedno s njihovim timovima i konjima, što Lipanjski turnir ponovno pozicionira među relevantna međunarodna konjička događanja u ovom dijelu Europe.','intro.p3':'Održavanje natjecanja ove razine nadovezuje se na dugu tradiciju Lipanjskog turnira, jednog od najstarijih konjičkih natjecanja u Hrvatskoj, ali istovremeno postavlja i jasne organizacijske zahtjeve — od infrastrukture i uvjeta na terenu do provedbe tehničkih i sigurnosnih standarda koje propisuje FEI. Upravo ta kombinacija kontinuiteta i zahtjevnosti definira ovogodišnje izdanje turnira.','intro.p4':'Uz sportski program, događanje uključuje i sadržaje za posjetitelje, a ulaz na natjecanje bit će besplatan.',
+      'facts.tournament':'Turnir','facts.categories':'Kategorije','facts.dates':'Termin','facts.datesValue':'11.–14. lipnja 2026.','facts.venue':'Lokacija','facts.venueValue':'Hipodrom, Zagreb · Hrvatska',
+      'about.eyebrow':'O natjecanju','about.title':'O Lipanjskom turniru','about.p1':'Lipanjski turnir održava se na zagrebačkom Hipodromu više od sedam desetljeća i jedno je od najdugovječnijih konjičkih natjecanja u Hrvatskoj. Kroz to vrijeme bio je stalni dio domaćeg sportskog kalendara i mjesto na kojem su domaći jahači redovito nastupali uz međunarodnu konkurenciju.','about.p2':'Za mnoge jahače upravo je ovdje počinjao prvi ozbiljniji iskorak prema međunarodnoj sceni, dok je publici omogućavao kontinuirano praćenje preponskog jahanja. Ta dvostruka uloga — razvoj domaćih sportaša i prisutnost stranih natjecatelja — određivala je turnir kroz godine.','about.p3':'Sedamdeseto izdanje, koje se održava od 11. do 14. lipnja 2026., vraća u Zagreb FEI World Cup razinu natjecanja nakon dvadeset godina. Time se program turnira pomiče prema zahtjevnijim utakmicama, s višim parkurima i tehnički složenijim postavama koje traže veću preciznost i iskustvo.','about.p4':'Program uključuje kategorije CSI2*-W, CSI1* i CSIYH1*, raspoređene kroz četiri dana, dok je Grand Prix za Pehar Grada Zagreba središnja utakmica turnira. Lipanjski turnir se pritom nastavlja u svom prepoznatljivom formatu, ali ove godine jasno ulazi u okvir natjecanja više razine.','about.stat1':'izdanje turnira','about.stat2':'natjecateljska dana','about.stat3':'godina od zadnjeg World Cupa','about.stat4':'zemalja sudionica',
+      'location.eyebrow':'Lokacija','location.title':'Hipodrom Zagreb','location.p1':'Natjecanje se održava na zagrebačkom Hipodromu.','location.p2':'Pristup lokaciji tijekom turnira organiziran je kroz označene ulaze i zone kretanja, uz privremenu regulaciju prometa i parkiranja u neposrednoj blizini. Preporučuje se pratiti upute na licu mjesta i planirati dolazak s obzirom na očekivanu posjećenost.','location.p3':'Karta prostora i upute za dolazak dostupni su na ovoj stranici.','location.address':'Adresa:','location.entry':'Glavni ulaz:','location.entryValue':'označen za posjetitelje — pratite upute na lokaciji','location.parking':'Parking:','location.parkingValue':'privremena regulacija u neposrednoj blizini','location.navigate':'Otvori navigaciju','location.mapPdf':'Karta prostora (PDF)','location.zones':'Zone na lokaciji','zone.arena':'Glavna arena','zone.warmup':'Warm-up','zone.stables':'Staje','zone.parking':'Parking','zone.entry':'Ulazi za posjetitelje','zone.showoffice':'Show office',
+      'programme.eyebrow':'Program','programme.title':'Detaljan raspored uskoro','programme.p1':'Program uključuje međunarodne utakmice u kategorijama CSI2*-W, CSI1* i CSIYH1*, uključujući World Cup kvalifikacijsku razinu te natjecanja za mlade konje. Uz sportski dio, tijekom četiri dana održavanja priprema se i opsežan prateći program za posjetitelje, s naglaskom na sadržaje za djecu i obitelji, kao i dodatne aktivnosti u okviru Sport Festa.','programme.soon':'<strong>Uskoro objavljujemo:</strong> raspored utakmica, satnicu, službeni program, informacije za publiku i detalje o popratnim sadržajima.','programme.notify':'Obavijesti me','day.thursday':'Četvrtak','day.friday':'Petak','day.saturday':'Subota','day.sunday':'Nedjelja','month.june':'Lipanj 2026.','day1.l1':'CSIYH1* — mladi konji','day1.l2':'CSI1* — uvodne utakmice','day1.l3':'Otvaranje turnira','day2.l1':'CSI2*-W — kvalifikacije','day2.l2':'CSI1* / CSIYH1*','day2.l3':'Večernji program','day3.l1':'<strong>Grand Prix — Pehar Grada Zagreba</strong>','day3.l2':'FEI World Cup ključna utakmica','day3.l3':'Svečana dodjela nagrada','day4.l1':'CSI2*-W finale','day4.l2':'Završne utakmice CSI1*','day4.l3':'Zatvaranje turnira',
+      'riders.eyebrow':'Za natjecatelje','riders.title':'Sve informacije za jahače i timove','riders.p1':'Zagrebački Hipodrom nalazi se unutar urbanog tkiva grada, na južnoj obali Save, svega nekoliko minuta vožnje od centra. Takva pozicija relativno je rijetka za konjičke objekte ove veličine i omogućuje izravan pristup gradskoj infrastrukturi, ali istovremeno znači da se dolazak i logistika odvijaju u uvjetima gradskog prometa, uključujući mostove preko Save koji u vršnim satima mogu biti opterećeni.','riders.p2':'Prostor Hipodroma proteže se uz rijeku i obuhvaća otvorene površine koje se za potrebe turnira organiziraju u natjecateljsku arenu, zagrijavanje i stajski dio. Zagrebačko konjičko okruženje čini mreža klubova u Zagrebu i okolici, s više od deset aktivnih sportskih klubova i kontinuiranim kalendarom natjecanja tijekom godine.','riders.p3':'Smještaj konja organiziran je u montažnim boksovima unutar hipodromskog prostora, uz prethodnu rezervaciju kroz prijavni proces. Show office nalazi se u neposrednoj blizini natjecateljske arene i staja te predstavlja referentnu točku za sve operativne informacije po dolasku.','riders.p4':'Zagreb kao domaćin nudi razvijenu hotelsku i ugostiteljsku infrastrukturu. U neposrednoj blizini Hipodroma, u Novom Zagrebu, nalaze se hoteli različitih kategorija, dok je centar grada udaljen desetak minuta vožnje i nudi širi izbor smještaja, restorana i pratećih sadržaja.','riders.contactTitle':'Rezervacija boksova i operativne informacije','riders.showoffice':'Show office','riders.phone':'+385 (0) — telefon',
+      'docs.schedule':'FEI Schedule (propozicije)','docs.scheduleD':'Službene propozicije natjecanja — uvjeti, kategorije, satnica.','docs.entries':'Prijave i rokovi','docs.entriesD':'Postupak prijave (entries) i rokovi za nominacije i definitive entries.','docs.vet':'Veterinarski uvjeti','docs.vetD':'Dokumentacija, uvoz konja, pregled po dolasku.','docs.tech':'Tehničke informacije','docs.techD':'Arena, podloga, warm-up uvjeti, dimenzije.','docs.map':'Karta Hipodroma','docs.mapD':'Označene zone: arena, warm-up, staje, parking, ulazi, show office.','docs.checkin':'Check-in konja','docs.checkinD':'Satnica dolaska, prijem konja, ulaz u staje.','docs.view':'Pregledaj',
+      'visitors.eyebrow':'Za posjetitelje','visitors.title':'Hipodrom otvoren za publiku','visitors.p1':'Lipanjski turnir otvara zagrebački Hipodrom publici i vraća međunarodno preponsko jahanje u prostor grada, na nekoliko minuta od centra Zagreba. Tijekom četiri dana natjecanja Hipodrom postaje mjesto na kojem se prati vrhunski sport, ali i provodi vrijeme na otvorenom, bez formalnosti koje inače prate ovakva događanja.','visitors.p2':'Natjecanja se odvijaju kroz dan, uz izmjenu ritma — od tehnički zahtjevnih utakmica do završnica koje se odlučuju u sekundama i okupljaju publiku oko arene. Upravo taj trenutak, kada nekoliko najboljih ulazi u završnicu, definira atmosferu turnira.','visitors.p3':'Uz sportski program, prostor Hipodroma tijekom dana funkcionira kao otvorena zona za posjetitelje. U suradnji sa Sport Festom prisutni su partneri i izlagači sportske opreme, uz prodajne štandove i sadržaj vezan uz aktivan način života. Gastro zona prati program tijekom cijelog dana.','visitors.p4':'Dio sadržaja namijenjen je djeci — dječji kutci, šetnje na konjima i druženje s maskotom Purgijem organizirani su u odvojenom dijelu prostora.','visitors.p5':'U večernjim satima program se nastavlja u opuštenijem formatu, uz party i slobodan ulaz.','visitors.freeBadge':'SLOBODAN ULAZ','visitors.ticketTitle':'Ulaz na natjecanje je besplatan','visitors.ticketDesc':'Ulaz na natjecanje i večernji party program je besplatan. Za posjetitelje koji žele pratiti natjecanje iz izdvojenog prostora, dostupna je VIP zona uz plaćanje.','visitors.vipTitle':'VIP zona','visitors.vipDesc':'Izdvojen prostor s pogledom na arenu, F&B uključen.','visitors.vipBuy':'Kupi VIP ulaznicu','visitors.vipContact':'VIP kontakt:',
+      'vf.sport':'Vrhunski sport','vf.sportD':'FEI World Cup utakmice i Grand Prix za Pehar Grada Zagreba.','vf.sportfest':'Sport Fest','vf.sportfestD':'Izlagači, sportska oprema, aktivnosti i sadržaji aktivnog načina života.','vf.kids':'Za djecu','vf.kidsD':'Dječji kutci, šetnje na konjima i maskota Purgi.','vf.gastro':'Gastro zona','vf.gastroD':'Hrana i piće tijekom cijelog dana, do večernjeg party programa.',
+      'sponsors.eyebrow':'Sponzori i partneri','sponsors.title':'Hvala onima koji čine turnir mogućim','sponsors.p1':'Povratak FEI World Cup natjecanja u Zagreb važan je sportski i organizacijski iskorak koji ne bi bio moguć bez podrške partnera, sponzora i institucija koje prepoznaju vrijednost međunarodnog sporta, tradicije i razvoja konjičkog sporta u Hrvatskoj.','sponsors.tier1':'Glavni sponzori','sponsors.tier2':'Tehnički partneri','sponsors.your':'Vaš logotip','sponsors.partner':'Partner','sponsors.cta':'Zainteresiranim partnerima dostupne su sponzorske mogućnosti kroz različite razine vidljivosti i aktivacije.','sponsors.contact':'partners@worldcupzagreb.com',
+      'media.eyebrow':'Mediji','media.title':'Akreditacije, materijali, galerija','media.p1':'Praćenje Lipanjskog turnira na razini FEI World Cup natjecanja organizira se uz prethodnu najavu dolaska i, prema potrebi, akreditaciju. Medijima je omogućen pristup natjecanju, izjavama i foto materijalima u skladu s pravilima događanja i organizacijom na terenu.','media.pressTitle':'Press materijali','media.pressDesc':'Službena priopćenja i objave za preuzimanje.','media.release1':'Priopćenje — najava turnira','media.release2':'Press kit — opće informacije','media.release3':'Fact sheet — FEI World Cup','media.photosTitle':'Fotografije','media.photosDesc':'Visokorezolucijska galerija za uredničku upotrebu.','media.download':'Preuzmi ZIP galeriju','media.aboutUs':'Mediji o nama','news.t1':'FEI World Cup vraća se u Zagreb nakon dvadeset godina','news.t2':'70. Lipanjski turnir: Grand Prix za Pehar Grada Zagreba','news.t3':'Hipodrom domaćin međunarodne preponske scene','media.contactTitle':'Akreditacije i upiti','media.role':'PR / Mediji','media.phone':'+385 (0) — telefon',
+      'contact.eyebrow':'Kontakt','contact.title':'Zagrebački konjički savez','contact.lede':'Organizator 70. Lipanjskog turnira i FEI World Cup natjecanja u Zagrebu.','contact.emailLabel':'E-mail','contact.phoneLabel':'Telefon','contact.phoneValue':'+385 (0) — kontakt','contact.webLabel':'Web',
+      'footer.org':'Organizator','footer.date':'11.–14. lipnja 2026. · Hipodrom Zagreb','footer.rights':'Sva prava pridržana.'
+    },
+    en: {
+      'nav.home':'Home','nav.about':'About','nav.location':'Location','nav.programme':'Programme','nav.riders':'For Riders','nav.visitors':'For Visitors','nav.sponsors':'Sponsors','nav.media':'Media','nav.contact':'Contact',
+      'hero.freeEntry':'FREE ENTRY FOR SPECTATORS!','hero.eyebrow':'FEI WORLD CUP · CSI2*-W | CSI1* | CSIYH1*','hero.tournament':'70th Lipanjski Tournament','hero.date':'11–14 June 2026  ·  Zagreb Hippodrome','hero.lead':'FEI World Cup show jumping returns to Zagreb after twenty years. Four days of international classes, open to the public.','hero.ctaProgramme':'Competition programme','hero.ctaVisitors':'For visitors',
+      'intro.eyebrow':'11–14 June 2026','intro.title':'FEI Jumping World Cup returns to Zagreb','intro.p1':'Zagreb will host an international show jumping competition from the calendar of the Fédération Équestre Internationale from 11 to 14 June, marking the return of FEI World Cup-level competition to the city after twenty years. The event takes place at the Zagreb Hippodrome as part of the 70th Lipanjski Tournament and will, over four days, bring together international riders and horses competing for World Cup points and qualification for the season final.','intro.p2':'The programme includes CSI2*-W, CSI1* and CSIYH1* categories, with multiple classes scheduled throughout the competition, while the central event will be the Grand Prix for the City of Zagreb Trophy. Riders from more than fifteen countries are expected to participate, together with their teams and horses, placing the Lipanjski Tournament once again within the circuit of relevant international equestrian events in this part of Europe.','intro.p3':'Hosting a competition at this level builds on the long-standing tradition of the Lipanjski Tournament, while at the same time requiring clearly defined organisational conditions — from arena and infrastructure to the technical and safety standards set by the FEI. This combination of continuity and operational demands defines this year\'s edition of the event.','intro.p4':'Alongside the competition programme, additional content for visitors will be available, and entry to the event will be free.',
+      'facts.tournament':'Tournament','facts.categories':'Categories','facts.dates':'Dates','facts.datesValue':'11–14 June 2026','facts.venue':'Venue','facts.venueValue':'Hippodrome, Zagreb · Croatia',
+      'about.eyebrow':'About the event','about.title':'About the Tournament','about.p1':'The Lipanjski Tournament has been held at the Zagreb Hippodrome for more than seventy years and is one of the longest-running equestrian competitions in Croatia. Over time, it has remained a fixed part of the national sporting calendar and a competition where Croatian riders regularly competed alongside international entries.','about.p2':'For many riders, this is where their first more serious step towards the international level began, while for the public it has provided a consistent opportunity to follow show jumping as a sport. This dual role — developing domestic athletes and hosting international participation — has defined the tournament over the years.','about.p3':'The 70th edition, taking place from 11 to 14 June 2026, brings FEI World Cup-level competition back to Zagreb after twenty years. This shifts the programme towards more demanding classes, with higher fences and technically more complex courses that require greater precision and experience.','about.p4':'The programme includes CSI2*-W, CSI1* and CSIYH1* categories, scheduled across four days, with the Grand Prix for the City of Zagreb Trophy as the central class. The Lipanjski Tournament continues in its established format, while this year clearly operating within a higher competitive level.','about.stat1':'edition of the tournament','about.stat2':'competition days','about.stat3':'years since last World Cup','about.stat4':'participating nations',
+      'location.eyebrow':'Location','location.title':'Zagreb Hippodrome','location.p1':'The competition takes place at the Zagreb Hippodrome.','location.p2':'Access to the venue during the event is organised through designated entry points and movement zones, with temporary traffic and parking arrangements in place. Visitors are advised to follow on-site directions and plan their arrival in line with expected attendance.','location.p3':'A venue map and directions are available on this page.','location.address':'Address:','location.entry':'Main entrance:','location.entryValue':'marked for visitors — follow on-site signage','location.parking':'Parking:','location.parkingValue':'temporary regulation nearby','location.navigate':'Open navigation','location.mapPdf':'Venue map (PDF)','location.zones':'Venue zones','zone.arena':'Main arena','zone.warmup':'Warm-up','zone.stables':'Stables','zone.parking':'Parking','zone.entry':'Visitor entrances','zone.showoffice':'Show office',
+      'programme.eyebrow':'Programme','programme.title':'Detailed schedule coming soon','programme.p1':'The programme will include international classes in the CSI2*-W, CSI1* and CSIYH1* categories, including World Cup qualifying level and young horse classes. Alongside the competition, a comprehensive visitor programme will run throughout the event, with a focus on activities for children and families, as well as additional content as part of the Sport Fest.','programme.soon':'<strong>Coming soon:</strong> competition schedule, timetable, official programme, visitor information and details of accompanying activities.','programme.notify':'Notify me','day.thursday':'Thursday','day.friday':'Friday','day.saturday':'Saturday','day.sunday':'Sunday','month.june':'June 2026','day1.l1':'CSIYH1* — young horses','day1.l2':'CSI1* — opening classes','day1.l3':'Tournament opening','day2.l1':'CSI2*-W — qualifiers','day2.l2':'CSI1* / CSIYH1*','day2.l3':'Evening programme','day3.l1':'<strong>Grand Prix — City of Zagreb Trophy</strong>','day3.l2':'FEI World Cup feature class','day3.l3':'Award ceremony','day4.l1':'CSI2*-W finals','day4.l2':'Closing CSI1* classes','day4.l3':'Tournament closing',
+      'riders.eyebrow':'For Riders','riders.title':'Everything riders and teams need','riders.p1':'The Zagreb Hippodrome is located within the urban area of the city, on the south bank of the Sava River, just a few minutes\' drive from the city centre. Such a position is relatively uncommon for equestrian venues of this size, offering direct access to city infrastructure, while at the same time requiring arrival and logistics to be planned within regular city traffic, including river crossings that may be congested during peak hours.','riders.p2':'The Hippodrome extends along the river and consists of open grounds that are organised for the event into the competition arena, warm-up areas and stabling. The equestrian scene in Zagreb is supported by a network of clubs in the city and surrounding area, with more than ten active clubs and a continuous competition calendar throughout the year.','riders.p3':'Horses are accommodated in temporary stables set up within the Hippodrome grounds, with reservations made in advance through the entry process. The show office is located close to the competition arena and stabling and serves as the main point of contact upon arrival.','riders.p4':'Zagreb offers a well-developed range of hotels and restaurants. In the immediate vicinity of the Hippodrome, in Novi Zagreb, there are hotels of different categories, while the city centre is a short drive away and provides a wider choice of accommodation, dining and other services.','riders.contactTitle':'Stable reservations and operational enquiries','riders.showoffice':'Show office','riders.phone':'+385 (0) — phone',
+      'docs.schedule':'FEI Schedule','docs.scheduleD':'Official competition schedule — conditions, categories, timing.','docs.entries':'Entries & deadlines','docs.entriesD':'Entry process and deadlines for nominated and definite entries.','docs.vet':'Veterinary requirements','docs.vetD':'Documents, horse import, on-arrival inspection.','docs.tech':'Technical information','docs.techD':'Arena, footing, warm-up conditions, dimensions.','docs.map':'Hippodrome map','docs.mapD':'Marked zones: arena, warm-up, stables, parking, entrances, show office.','docs.checkin':'Horse check-in','docs.checkinD':'Arrival schedule, reception, stable entry.','docs.view':'View',
+      'visitors.eyebrow':'For Visitors','visitors.title':'Hippodrome open to the public','visitors.p1':'The Lipanjski Tournament opens the Zagreb Hippodrome to the public, bringing international show jumping into the urban space, just a few minutes from the city centre. Over four days, the venue becomes a place to follow top-level sport while spending time outdoors, without the formality that usually surrounds events of this kind.','visitors.p2':'The competition runs throughout the day, shifting in pace — from technical classes to final rounds decided in seconds, drawing the crowd towards the arena. Those moments, when the leading riders return for the final rounds, define the atmosphere of the event.','visitors.p3':'Alongside the sport, the Hippodrome functions as an open visitor zone. In cooperation with Sport Fest, partners and exhibitors present sports equipment, accompanied by retail stands and content focused on an active lifestyle. A food and beverage area runs throughout the day.','visitors.p4':'A dedicated section of the programme is designed for children, including children\'s zones, horse walks and meet-and-greet sessions with the event mascot Purgi.','visitors.p5':'In the evening, the programme continues in a more relaxed format, with a party and free entry.','visitors.freeBadge':'FREE ENTRY','visitors.ticketTitle':'Admission to the competition is free','visitors.ticketDesc':'Admission to the competition and the evening party programme is free. For visitors who prefer to follow the competition from a separate area, a paid VIP zone is available.','visitors.vipTitle':'VIP zone','visitors.vipDesc':'Dedicated arena-view area with F&B included.','visitors.vipBuy':'Buy VIP ticket','visitors.vipContact':'VIP contact:',
+      'vf.sport':'Top-level sport','vf.sportD':'FEI World Cup classes and the Grand Prix for the City of Zagreb Trophy.','vf.sportfest':'Sport Fest','vf.sportfestD':'Exhibitors, sports gear, activities and active-lifestyle content.','vf.kids':'For children','vf.kidsD':'Kids\' zones, horse walks and meet-and-greet with mascot Purgi.','vf.gastro':'Food & beverage','vf.gastroD':'Food and drinks throughout the day, into the evening party.',
+      'sponsors.eyebrow':'Sponsors & partners','sponsors.title':'Thank you to those who make the tournament possible','sponsors.p1':'The return of FEI World Cup-level competition to Zagreb is an important sporting and organisational milestone, made possible with the support of partners, sponsors and institutions that recognise the value of international sport, tradition and the development of equestrian sport in Croatia.','sponsors.tier1':'Main sponsors','sponsors.tier2':'Technical partners','sponsors.your':'Your logo','sponsors.partner':'Partner','sponsors.cta':'Partnership opportunities are available through different levels of visibility and activation.','sponsors.contact':'partners@worldcupzagreb.com',
+      'media.eyebrow':'Media','media.title':'Accreditation, materials, gallery','media.p1':'Coverage of the Lipanjski Tournament at FEI World Cup level is organised with prior notice and, where required, accreditation. Media representatives are granted access to the competition, statements and photo materials in accordance with event guidelines and on-site organisation.','media.pressTitle':'Press materials','media.pressDesc':'Official press releases and announcements for download.','media.release1':'Press release — tournament announcement','media.release2':'Press kit — general information','media.release3':'Fact sheet — FEI World Cup','media.photosTitle':'Photos','media.photosDesc':'High-resolution gallery for editorial use.','media.download':'Download ZIP gallery','media.aboutUs':'Press coverage','news.t1':'FEI World Cup returns to Zagreb after twenty years','news.t2':'70th Lipanjski Tournament: Grand Prix for City of Zagreb','news.t3':'Hippodrome hosts international show jumping scene','media.contactTitle':'Accreditation & enquiries','media.role':'PR / Media','media.phone':'+385 (0) — phone',
+      'contact.eyebrow':'Contact','contact.title':'Zagreb Equestrian Federation','contact.lede':'Organiser of the 70th Lipanjski Tournament and the FEI World Cup in Zagreb.','contact.emailLabel':'E-mail','contact.phoneLabel':'Phone','contact.phoneValue':'+385 (0) — contact','contact.webLabel':'Website',
+      'footer.org':'Organiser','footer.date':'11–14 June 2026 · Zagreb Hippodrome','footer.rights':'All rights reserved.'
+    }
+  };
+
+  function setLang(lang) {
+    if (!i18n[lang]) return;
+    document.documentElement.lang = lang;
+    document.documentElement.dataset.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var value = i18n[lang][el.getAttribute('data-i18n')];
+      if (typeof value === 'string') el.innerHTML = value;
+    });
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.classList.toggle('is-active', btn.dataset.langBtn === lang);
+    });
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () { setLang(btn.dataset.langBtn); });
+  });
+
+  var initial = 'hr';
+  try {
+    var stored = localStorage.getItem('lang');
+    if (stored && i18n[stored]) initial = stored;
+    else if (navigator.language && /^en/i.test(navigator.language)) initial = 'en';
+  } catch (e) {}
+  setLang(initial);
+
+  /* Reveal on scroll */
+  var observer = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12 })
+    : null;
+  if (observer) {
+    document.querySelectorAll('.section, .day-card, .doc-card, .feat, .news-card, .stat').forEach(function (el) {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>
