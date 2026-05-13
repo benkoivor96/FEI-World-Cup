@@ -1,0 +1,47 @@
+/* =========================================================
+   FEI World Cup Zagreb 2026 — V5
+   Ispravke prema feedbacku klijenta:
+   - Font: Oswald umjesto Playfair Display / Hagrid
+   - Stats: bez okvira, direktno na podlogu
+   - ZKS logo: bijeli (negativ) na tamnoj podlozi
+   - ZAGREB background animacija: uklonjena iz HTML-a
+   ========================================================= */
+
+/* ---------- Font ---------- */
+:root {
+  --font-serif: "Oswald", Impact, "Arial Narrow", Arial, sans-serif;
+}
+
+/* ---------- Stats — direktno na podlogu, bez okvira ---------- */
+.stat {
+  background: transparent;
+  border: none;
+  padding: 28px 22px;
+}
+.stat-num {
+  font-style: normal;
+}
+
+/* ---------- ZKS logo — bijeli na tamnoj podlozi ---------- */
+.site-header .brand-logo,
+.site-footer .footer-brand img {
+  filter: brightness(0) invert(1);
+}
+
+/* ---------- Na bijelim sekcijama logo ostaje u boji ---------- */
+/* (header je uvijek taman pa ostaje bijel) */
+
+/* ---------- Key facts — font bez italica ---------- */
+.kf-value {
+  font-style: normal;
+}
+
+/* ---------- Ostali display elementi — bez italica ---------- */
+.hero-title-big,
+.day-num,
+.contact-name,
+.vip-title,
+.brand-line-2,
+.footer-brand strong {
+  font-style: normal;
+}
