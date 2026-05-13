@@ -89,12 +89,13 @@ body { background: var(--purple-800); }
 .kf-value { font-style: normal; }
 
 /* ---------- Ostali display elementi — bez italica ---------- */
-.hero-title-big,
 .day-num,
 .contact-name,
 .vip-title,
 .brand-line-2,
 .footer-brand strong { font-style: normal; }
+
+.hero-title-big { font-style: italic; }
 
 /* ---------- Čitljivi elementi — Inter umjesto display fonta ----------
    key facts vrijednosti i kontakt linkovi koriste Inter (već učitan)
