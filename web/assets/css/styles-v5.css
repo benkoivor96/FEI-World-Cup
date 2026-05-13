@@ -122,26 +122,57 @@ body { background: var(--purple-800); }
 
 /* ---------- Mobile fixes ---------- */
 
-/* Brand tekst uvijek vidljiv (base CSS ga skriva na 480px jer je bio uz logo) */
-@media (max-width: 480px) {
-  .brand-text { display: flex !important; }
-  .brand-line-1 { font-size: .65rem; }
-  .brand-line-2 { font-size: .9rem; }
-}
-
-/* Mobile nav — solidan taman background, čitljivi linkovi */
 @media (max-width: 768px) {
+  /* Header — solidan bg, veći, bez blur efekta */
+  .site-header {
+    background: #2E1340 !important;
+    background-color: #2E1340 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .nav-row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 72px;
+  }
+
+  /* Hamburger — veći, bijeli, iznad nava */
+  .nav-toggle {
+    z-index: 1001 !important;
+    width: 44px;
+    height: 44px;
+  }
+  .nav-toggle span { background: #FFFFFF !important; }
+
+  /* Nav overlay — puni viewport, solidan bg, iznad svega */
   .primary-nav {
-    background: #2E1340;
-    border-left: 3px solid #2293D1;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100dvh !important;
+    background: #2E1340 !important;
+    background-color: #2E1340 !important;
+    z-index: 1000 !important;
+    overflow-y: auto !important;
+    border-left: none !important;
+    border-top: 4px solid #2293D1 !important;
+    opacity: 1 !important;
   }
   .primary-nav a {
-    color: #FFFFFF;
-    font-size: 1.1rem;
+    color: #FFFFFF !important;
+    font-size: 1.15rem;
+    font-weight: 500;
   }
-  .primary-nav .lang-switch {
-    border-color: rgba(255,255,255,.3);
-  }
-  /* Hamburger ikonica uvijek bijela */
-  .nav-toggle span { background: #FFFFFF; }
+  .primary-nav .lang-switch { border-color: rgba(255,255,255,.3); }
+}
+
+/* Brand tekst uvijek vidljiv na svim veličinama */
+@media (max-width: 480px) {
+  .brand-text { display: flex !important; }
+  .brand-line-1 { font-size: .68rem; letter-spacing: .18em; }
+  .brand-line-2 { font-size: 1rem; }
 }
