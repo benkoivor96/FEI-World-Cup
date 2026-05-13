@@ -3,6 +3,7 @@
    Zamjena Playfair Display → Hagrid (lokalni font, licenca)
    ========================================================= */
 
+/* Učitavamo samo čiste (non-italic) rezove — italic rezovi sadrže trial watermark */
 @font-face {
   font-family: "Hagrid";
   src: url("../fonts/Hagrid-Regular.ttf") format("truetype");
@@ -12,26 +13,23 @@
 }
 @font-face {
   font-family: "Hagrid";
-  src: url("../fonts/Hagrid-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Hagrid";
   src: url("../fonts/Hagrid-Extrabold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Hagrid";
-  src: url("../fonts/Hagrid-Extrabold-Italic.ttf") format("truetype");
-  font-weight: 800;
-  font-style: italic;
   font-display: swap;
 }
 
 :root {
   --font-serif: "Hagrid", "Times New Roman", Georgia, serif;
 }
+
+/* Sve što je bilo italic → normal, da browser ne posegne za italic rezovima */
+.hero-title-big,
+.hero-zagreb,
+.stat-num,
+.day-num,
+.kf-value,
+.brand-line-2,
+.contact-name,
+.vip-title,
+.footer-brand strong { font-style: normal; }
