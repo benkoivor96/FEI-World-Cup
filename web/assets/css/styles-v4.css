@@ -3,21 +3,44 @@
    Zamjena Playfair Display → Hagrid (lokalni font, licenca)
    ========================================================= */
 
-/* Samo Hagrid Regular (400) — Extrabold (800) ima trial watermark na brojevima i headinzima.
-   Za weight 800 browser automatski pada na Playfair Display koji je vizualno sličan. */
+/* Hagrid trial fontovi zamjenjuju znamenke (0–9) watermark logotipom.
+   unicode-range isključuje U+0030–U+0039 iz Hagrida → za brojeve browser
+   pada na Playfair Display, za sva slova/interpunkciju koristi Hagrid. */
+
 @font-face {
   font-family: "Hagrid";
   src: url("../fonts/Hagrid-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Extrabold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Extrabold-Italic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
 }
 
 :root {
-  /* Hagrid za weight 400, Playfair Display za weight 800 */
+  /* Hagrid za slova, Playfair Display za znamenke (fallback) */
   --font-serif: "Hagrid", "Playfair Display", Georgia, serif;
 }
-
-/* Elementi s font-style:italic + weight 400 → ostaju normal da ne dođe do sintetiziranog italica */
-.hero-title-big,
-.hero-zagreb { font-style: normal; }
