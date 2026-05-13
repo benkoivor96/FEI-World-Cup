@@ -1,0 +1,37 @@
+/* =========================================================
+   FEI World Cup Zagreb 2026 — V4 font overrides
+   Zamjena Playfair Display → Hagrid (lokalni font, licenca)
+   ========================================================= */
+
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Extrabold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Extrabold-Italic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-serif: "Hagrid", "Times New Roman", Georgia, serif;
+}
