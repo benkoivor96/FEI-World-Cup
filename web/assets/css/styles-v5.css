@@ -1,15 +1,80 @@
 /* =========================================================
    FEI World Cup Zagreb 2026 — V5
-   Ispravke prema feedbacku klijenta:
-   - Font: Oswald umjesto Playfair Display / Hagrid
-   - Stats: bez okvira, direktno na podlogu
-   - ZKS logo: bijeli (negativ) na tamnoj podlozi
-   - ZAGREB background animacija: uklonjena iz HTML-a
+   Ispravke prema feedbacku klijenta
    ========================================================= */
 
-/* ---------- Font ---------- */
+/* ---------- Hagrid za slova, Oswald za znamenke ----------
+   unicode-range isključuje znamenke (U+0030–U+0039) iz Hagrida.
+   Za znamenke browser pada na Oswald (Google Fonts, nema watermark).
+   --------------------------------------------------------- */
+
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Extrabold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid-Extrabold-Italic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-FFFF;
+}
+
 :root {
-  --font-serif: "Oswald", Impact, "Arial Narrow", Arial, sans-serif;
+  /* Hagrid za slova → Oswald za znamenke → fallback */
+  --font-serif: "Hagrid", "Oswald", Impact, Arial, sans-serif;
+
+  /* Ispravna boja pozadine (samplirana iz background.png) */
+  --purple-900: #2E1340;
+  --purple-800: #381844;
+  --purple-700: #401A4C;
+}
+
+/* ---------- Globalna pozadina ---------- */
+body { background: var(--purple-800); }
+
+/* ---------- Sekcije — ispravna boja ---------- */
+.section-intro     { background: var(--purple-900); }
+.section-about     { background: var(--purple-800); }
+.section-location  { background: var(--purple-900); }
+.section-programme { background: var(--purple-900); }
+.section-riders    { background: var(--purple-800); }
+.section-visitors  { background: var(--purple-900); }
+.section-sponsors  { background: var(--purple-900); }
+.section-media     { background: var(--purple-800); }
+.section-contact   { background: linear-gradient(180deg, var(--purple-900) 0%, #4F2A85 100%); }
+.site-footer       { background: var(--purple-900); }
+.site-header       { background: rgba(56,24,68,.82); }
+
+/* ---------- Header — samo tekst, bez loga ---------- */
+.brand-line-1 {
+  font-size: .75rem;
+  letter-spacing: .22em;
+}
+.brand-line-2 {
+  font-size: 1.1rem;
+  letter-spacing: .02em;
 }
 
 /* ---------- Stats — direktno na podlogu, bez okvira ---------- */
@@ -18,23 +83,10 @@
   border: none;
   padding: 28px 22px;
 }
-.stat-num {
-  font-style: normal;
-}
+.stat-num { font-style: normal; }
 
-/* ---------- ZKS logo — bijeli na tamnoj podlozi ---------- */
-.site-header .brand-logo,
-.site-footer .footer-brand img {
-  filter: brightness(0) invert(1);
-}
-
-/* ---------- Na bijelim sekcijama logo ostaje u boji ---------- */
-/* (header je uvijek taman pa ostaje bijel) */
-
-/* ---------- Key facts — font bez italica ---------- */
-.kf-value {
-  font-style: normal;
-}
+/* ---------- Key facts — bez italica ---------- */
+.kf-value { font-style: normal; }
 
 /* ---------- Ostali display elementi — bez italica ---------- */
 .hero-title-big,
@@ -42,6 +94,16 @@
 .contact-name,
 .vip-title,
 .brand-line-2,
-.footer-brand strong {
-  font-style: normal;
+.footer-brand strong { font-style: normal; }
+
+/* ---------- Footer logo — negativ ----------
+   grayscale + visoki kontrast → binarizira sliku
+   invert → tamni dijelovi postaju bijeli, svjetli crni
+   screen blend → crna pozadina nestaje, bijeli logo ostaje
+   --------------------------------------------------------- */
+.footer-logo-neg {
+  width: 56px;
+  height: auto;
+  filter: grayscale(1) contrast(100) invert(1);
+  mix-blend-mode: screen;
 }
