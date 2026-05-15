@@ -637,18 +637,32 @@ strong { font-weight: 700; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 40px 64px;
-  padding: 48px 0 56px;
+  justify-content: flex-start;
+  gap: 32px 56px;
+  padding: 20px 0 28px;
 }
 .partners-row img {
   height: 48px;
   width: auto;
-  filter: brightness(0) invert(1);
   opacity: 0.8;
   transition: opacity .2s;
 }
 .partners-row img:hover { opacity: 1; }
+.partners-row a { display: flex; align-items: center; }
+.partners-row img[alt="Grad Zagreb"],
+.partners-row img[alt="Republika Hrvatska"] { height: 72px; }
+.partners-row img[alt="Catering Muring"] { height: 110px; }
+.partners-row img[alt="Galić"] { height: 80px; }
+.partners-label {
+  font-family: var(--font-sans);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--cyan-400);
+  margin: 36px 0 0;
+}
+.partners-label:first-of-type { margin-top: 0; }
 .logo-cell {
   aspect-ratio: 3/2;
   display: flex; align-items: center; justify-content: center;
@@ -1213,13 +1227,36 @@ strong { font-weight: 700; }
       <p class="eyebrow" data-i18n="sponsors.eyebrow">Partneri i sponzori</p>
       <h2 data-i18n="sponsors.title">Partneri FEI World Cup Zagreb 2026</h2>
     </header>
+
+    <p class="partners-label" data-i18n="sponsors.patrons">Pokrovitelji</p>
     <div class="partners-row">
-      <img src="assets/img/fei-logo.png" alt="FEI" />
-      <img src="assets/img/r&d-logo.png" alt="Riders &amp; Dreams" />
-      <img src="assets/img/danube-logo.png" alt="Danube Champions Tour" />
-      <img src="assets/img/hks-logo.png" alt="HKS" />
-      <img src="assets/img/zagreb-logo.png" alt="Zagreb" />
+      <a href="https://www.zagreb.hr" target="_blank" rel="noopener">
+        <img src="assets/img/zagreb-logo.png" alt="Grad Zagreb" />
+      </a>
+      <a href="https://gov.hr" target="_blank" rel="noopener">
+        <img src="assets/img/logohrvatska-negativ.png" alt="Republika Hrvatska" />
+      </a>
     </div>
+
+    <p class="partners-label" data-i18n="sponsors.partners">Partneri</p>
+    <div class="partners-row">
+      <a href="https://www.nexe.hr" target="_blank" rel="noopener">
+        <img src="assets/img/logonexe-negativ.png" alt="Nexe" />
+      </a>
+      <a href="https://www.janaf.hr" target="_blank" rel="noopener">
+        <img src="assets/img/logojanaf-negativ.png" alt="Janaf" />
+      </a>
+      <a href="https://galic-vina.hr/" target="_blank" rel="noopener">
+        <img src="assets/img/logogalic-negativ.png" alt="Galić" />
+      </a>
+      <a href="https://www.cateringmuring.hr/" target="_blank" rel="noopener">
+        <img src="assets/img/logocatering-negativ.png" alt="Catering Muring" />
+      </a>
+      <a href="https://www.optimarent.hr/" target="_blank" rel="noopener">
+        <img src="assets/img/logooptimarent-negativ.png" alt="Optima Rent a Car" />
+      </a>
+    </div>
+
     <div class="callout callout-cta">
       <p data-i18n="sponsors.cta">Zainteresiranim partnerima dostupne su sponzorske mogućnosti kroz različite razine vidljivosti i aktivacije.</p>
       <a class="btn btn-primary" href="mailto:partners@worldcupzagreb.com" data-i18n="sponsors.contact">partners@worldcupzagreb.com</a>
@@ -1381,7 +1418,7 @@ strong { font-weight: 700; }
       'docs.schedule':'FEI Schedule (propozicije)','docs.scheduleD':'Službene propozicije natjecanja — uvjeti, kategorije, satnica.','docs.map':'Karta Hipodroma','docs.mapD':'Označene zone: arena, warm-up, staje, parking, ulazi, show office.','docs.showoffice':'Show office','docs.contactTag':'KONTAKT','docs.view':'Pregledaj',
       'visitors.eyebrow':'Za posjetitelje','visitors.title':'Hipodrom otvoren za publiku','visitors.p1':'Lipanjski turnir otvara zagrebački Hipodrom publici i vraća međunarodno preponsko jahanje u prostor grada, na nekoliko minuta od centra Zagreba. Tijekom četiri dana natjecanja Hipodrom postaje mjesto na kojem se prati vrhunski sport, ali i provodi vrijeme na otvorenom, bez formalnosti koje inače prate ovakva događanja.','visitors.p2':'Natjecanja se odvijaju kroz dan, uz izmjenu ritma — od tehnički zahtjevnih utakmica do završnica koje se odlučuju u sekundama i okupljaju publiku oko arene. Upravo taj trenutak, kada nekoliko najboljih ulazi u završnicu, definira atmosferu turnira.','visitors.p3':'Uz sportski program, prostor Hipodroma tijekom dana funkcionira kao otvorena zona za posjetitelje. U suradnji sa Sport Festom prisutni su partneri i izlagači sportske opreme, uz prodajne štandove i sadržaj vezan uz aktivan način života. Gastro zona prati program tijekom cijelog dana.','visitors.p4':'Dio sadržaja namijenjen je djeci — dječji kutci, šetnje na konjima i druženje s maskotom Purgijem organizirani su u odvojenom dijelu prostora.','visitors.p5':'U večernjim satima program se nastavlja u opuštenijem formatu, uz party i slobodan ulaz.','visitors.freeBadge':'SLOBODAN ULAZ','visitors.ticketTitle':'Ulaz na natjecanje je besplatan','visitors.ticketDesc':'Ulaz na natjecanje i večernji party program je besplatan. Za posjetitelje koji žele pratiti natjecanje iz izdvojenog prostora, dostupna je VIP zona uz plaćanje.','visitors.vipTitle':'VIP zona','visitors.vipDesc':'Izdvojen prostor s pogledom na arenu, F&B uključen.','visitors.vipBuy':'Kupi VIP ulaznicu','visitors.vipContact':'VIP kontakt:',
       'vf.sport':'Vrhunski sport','vf.sportD':'FEI World Cup utakmice i Grand Prix za Pehar Grada Zagreba.','vf.sportfest':'Sport Fest','vf.sportfestD':'Izlagači, sportska oprema, aktivnosti i sadržaji aktivnog načina života.','vf.kids':'Za djecu','vf.kidsD':'Dječji kutci, šetnje na konjima i maskota Purgi.','vf.gastro':'Gastro zona','vf.gastroD':'Hrana i piće tijekom cijelog dana, do večernjeg party programa.',
-      'sponsors.eyebrow':'Partneri i sponzori','sponsors.title':'Partneri FEI World Cup Zagreb 2026','sponsors.p1':'Povratak FEI World Cup natjecanja u Zagreb važan je sportski i organizacijski iskorak koji ne bi bio moguć bez podrške partnera, sponzora i institucija koje prepoznaju vrijednost međunarodnog sporta, tradicije i razvoja konjičkog sporta u Hrvatskoj.','sponsors.tier1':'Glavni sponzori','sponsors.tier2':'Tehnički partneri','sponsors.your':'Vaš logotip','sponsors.partner':'Partner','sponsors.cta':'Zainteresiranim partnerima dostupne su sponzorske mogućnosti kroz različite razine vidljivosti i aktivacije.','sponsors.contact':'partners@worldcupzagreb.com',
+      'sponsors.eyebrow':'Partneri i sponzori','sponsors.title':'Partneri FEI World Cup Zagreb 2026','sponsors.patrons':'Pokrovitelji','sponsors.partners':'Partneri','sponsors.p1':'Povratak FEI World Cup natjecanja u Zagreb važan je sportski i organizacijski iskorak koji ne bi bio moguć bez podrške partnera, sponzora i institucija koje prepoznaju vrijednost međunarodnog sporta, tradicije i razvoja konjičkog sporta u Hrvatskoj.','sponsors.tier1':'Glavni sponzori','sponsors.tier2':'Tehnički partneri','sponsors.your':'Vaš logotip','sponsors.partner':'Partner','sponsors.cta':'Zainteresiranim partnerima dostupne su sponzorske mogućnosti kroz različite razine vidljivosti i aktivacije.','sponsors.contact':'partners@worldcupzagreb.com',
       'media.eyebrow':'Mediji','media.title':'Materijali i galerija','media.p1':'Praćenje Lipanjskog turnira na razini FEI World Cup natjecanja organizira se uz prethodnu najavu dolaska. Medijima je omogućen pristup natjecanju, izjavama i foto materijalima u skladu s pravilima događanja i organizacijom na terenu.','media.pressTitle':'Press materijali','media.pressDesc':'Službena priopćenja i objave za preuzimanje.','media.release1':'Priopćenje — najava turnira','media.release2':'Press kit — opće informacije','media.release3':'Fact sheet — FEI World Cup','media.photosTitle':'Fotografije','media.photosDesc':'Visokorezolucijska galerija za uredničku upotrebu.','media.download':'Preuzmi ZIP galeriju','media.aboutUs':'Mediji o nama','news.t1':'FEI World Cup vraća se u Zagreb nakon dvadeset godina','news.t2':'70. Lipanjski turnir: Grand Prix za Pehar Grada Zagreba','news.t3':'Hipodrom domaćin međunarodne preponske scene','media.contactTitle':'Upiti za medije','media.role':'PR / Mediji','media.phone':'+385 (0) — telefon',
       'contact.eyebrow':'Kontakt','contact.title':'Zagrebački konjički savez','contact.lede':'Organizator 70. Lipanjskog turnira i FEI World Cup natjecanja u Zagrebu.','contact.emailLabel':'E-mail','contact.phoneLabel':'Telefon','contact.phoneValue':'+385 (0) — kontakt','contact.webLabel':'Web organizatora',
       'footer.org':'Organizator','footer.date':'11.–14. lipnja 2026. · Hipodrom Zagreb','footer.rights':'Sva prava pridržana.'
@@ -1398,7 +1435,7 @@ strong { font-weight: 700; }
       'docs.schedule':'FEI Schedule','docs.scheduleD':'Official competition schedule — conditions, categories, timing.','docs.map':'Hippodrome map','docs.mapD':'Marked zones: arena, warm-up, stables, parking, entrances, show office.','docs.showoffice':'Show office','docs.contactTag':'CONTACT','docs.view':'View',
       'visitors.eyebrow':'For Visitors','visitors.title':'Hippodrome open to the public','visitors.p1':'The Lipanjski Tournament opens the Zagreb Hippodrome to the public, bringing international show jumping into the urban space, just a few minutes from the city centre. Over four days, the venue becomes a place to follow top-level sport while spending time outdoors, without the formality that usually surrounds events of this kind.','visitors.p2':'The competition runs throughout the day, shifting in pace — from technical classes to final rounds decided in seconds, drawing the crowd towards the arena. Those moments, when the leading riders return for the final rounds, define the atmosphere of the event.','visitors.p3':'Alongside the sport, the Hippodrome functions as an open visitor zone. In cooperation with Sport Fest, partners and exhibitors present sports equipment, accompanied by retail stands and content focused on an active lifestyle. A food and beverage area runs throughout the day.','visitors.p4':'A dedicated section of the programme is designed for children, including children\'s zones, horse walks and meet-and-greet sessions with the event mascot Purgi.','visitors.p5':'In the evening, the programme continues in a more relaxed format, with a party and free entry.','visitors.freeBadge':'FREE ENTRY','visitors.ticketTitle':'Admission to the competition is free','visitors.ticketDesc':'Admission to the competition and the evening party programme is free. For visitors who prefer to follow the competition from a separate area, a paid VIP zone is available.','visitors.vipTitle':'VIP zone','visitors.vipDesc':'Dedicated arena-view area with F&B included.','visitors.vipBuy':'Buy VIP ticket','visitors.vipContact':'VIP contact:',
       'vf.sport':'Top-level sport','vf.sportD':'FEI World Cup classes and the Grand Prix for the City of Zagreb Trophy.','vf.sportfest':'Sport Fest','vf.sportfestD':'Exhibitors, sports gear, activities and active-lifestyle content.','vf.kids':'For children','vf.kidsD':'Kids\' zones, horse walks and meet-and-greet with mascot Purgi.','vf.gastro':'Food & beverage','vf.gastroD':'Food and drinks throughout the day, into the evening party.',
-      'sponsors.eyebrow':'Partners & sponsors','sponsors.title':'Partners of FEI World Cup Zagreb 2026','sponsors.p1':'The return of FEI World Cup-level competition to Zagreb is an important sporting and organisational milestone, made possible with the support of partners, sponsors and institutions that recognise the value of international sport, tradition and the development of equestrian sport in Croatia.','sponsors.tier1':'Main sponsors','sponsors.tier2':'Technical partners','sponsors.your':'Your logo','sponsors.partner':'Partner','sponsors.cta':'Partnership opportunities are available through different levels of visibility and activation.','sponsors.contact':'partners@worldcupzagreb.com',
+      'sponsors.eyebrow':'Partners & sponsors','sponsors.title':'Partners of FEI World Cup Zagreb 2026','sponsors.patrons':'Patrons','sponsors.partners':'Partners','sponsors.p1':'The return of FEI World Cup-level competition to Zagreb is an important sporting and organisational milestone, made possible with the support of partners, sponsors and institutions that recognise the value of international sport, tradition and the development of equestrian sport in Croatia.','sponsors.tier1':'Main sponsors','sponsors.tier2':'Technical partners','sponsors.your':'Your logo','sponsors.partner':'Partner','sponsors.cta':'Partnership opportunities are available through different levels of visibility and activation.','sponsors.contact':'partners@worldcupzagreb.com',
       'media.eyebrow':'Media','media.title':'Materials & gallery','media.p1':'Coverage of the Lipanjski Tournament at FEI World Cup level is organised with prior notice of attendance. Media representatives are granted access to the competition, statements and photo materials in accordance with event guidelines and on-site organisation.','media.pressTitle':'Press materials','media.pressDesc':'Official press releases and announcements for download.','media.release1':'Press release — tournament announcement','media.release2':'Press kit — general information','media.release3':'Fact sheet — FEI World Cup','media.photosTitle':'Photos','media.photosDesc':'High-resolution gallery for editorial use.','media.download':'Download ZIP gallery','media.aboutUs':'Press coverage','news.t1':'FEI World Cup returns to Zagreb after twenty years','news.t2':'70th Lipanjski Tournament: Grand Prix for City of Zagreb','news.t3':'Hippodrome hosts international show jumping scene','media.contactTitle':'Media enquiries','media.role':'PR / Media','media.phone':'+385 (0) — phone',
       'contact.eyebrow':'Contact','contact.title':'Zagreb Equestrian Federation','contact.lede':'Organiser of the 70th Lipanjski Tournament and the FEI World Cup in Zagreb.','contact.emailLabel':'E-mail','contact.phoneLabel':'Phone','contact.phoneValue':'+385 (0) — contact','contact.webLabel':'Organiser website',
       'footer.org':'Organiser','footer.date':'11–14 June 2026 · Zagreb Hippodrome','footer.rights':'All rights reserved.'
