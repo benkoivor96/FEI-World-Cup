@@ -251,10 +251,10 @@ strong { font-weight: 700; }
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
   isolation: isolate;
-  padding: 64px 0 80px;
+  padding: 72px 0 0;
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -273,13 +273,24 @@ strong { font-weight: 700; }
 }
 .hero-horse {
   position: absolute;
-  right: -2%; bottom: -2%;
-  width: clamp(420px, 60vw, 900px);
-  z-index: -1;
+  right: -2%; bottom: 0;
+  width: clamp(420px, 55vw, 860px);
+  z-index: 1;
   pointer-events: none;
   filter: drop-shadow(0 30px 60px rgba(0,0,0,.5));
 }
-.hero-content { position: relative; max-width: 760px; }
+.hero-content { position: relative; max-width: 900px; z-index: 2; padding-bottom: 48px; }
+.hero-zagreb-bottom-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  filter: brightness(0) saturate(100%) invert(43%) sepia(64%) saturate(380%) hue-rotate(167deg);
+  transform: translateY(38%);
+  z-index: 0;
+  pointer-events: none;
+}
 .hero-badges { margin-bottom: 22px; }
 .hero-partners {
   display: flex;
@@ -340,6 +351,25 @@ strong { font-weight: 700; }
 }
 @media (max-width: 480px) {
   .hero-zagreb-img { width: clamp(100px, 72vw, 390px); }
+}
+.hero-title-v2 { margin: 0 0 16px; line-height: 1.1; }
+.hero-title-v2-top {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-style: normal;
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  color: var(--white);
+  letter-spacing: .01em;
+}
+.hero-title-v2-sub {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.6vw, 2.4rem);
+  color: var(--cyan-400);
+  letter-spacing: .01em;
 }
 .hero-date { font-size: 1.05rem; letter-spacing: .04em; color: rgba(255,255,255,.88); margin: 6px 0 18px; }
 .hero-lead { font-size: 1.08rem; max-width: 560px; color: rgba(255,255,255,.82); margin-bottom: 28px; }
@@ -933,17 +963,18 @@ strong { font-weight: 700; }
     <div class="hero-badges">
       <span class="badge badge-light" data-i18n="hero.freeEntry">SLOBODAN ULAZ ZA POSJETITELJE</span>
     </div>
-    <p class="hero-eyebrow" data-i18n="hero.eyebrow">FEI WORLD CUP · CSI2*-W | CSI1* | CSIYH1*</p>
-    <h1 class="hero-title">
-      <span class="hero-title-small" data-i18n="hero.tournament">70. Lipanjski turnir</span>
-      <span class="hero-title-big"><img class="hero-zagreb-img" src="assets/img/zagreb-hero.png" alt="ZAGREB" /></span>
+    <h1 class="hero-title-v2">
+      <span class="hero-title-v2-top">FEI WORLD CUP ZAGREB</span>
+      <span class="hero-title-v2-sub" data-i18n="hero.tournament">70. Lipanjski turnir</span>
     </h1>
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">FEI WORLD CUP · CSI2*-W | CSI1* | CSIYH1*</p>
     <p class="hero-date" data-i18n="hero.date">11.–14. lipnja 2026.  ·  Hipodrom Zagreb</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#programme" data-i18n="hero.ctaProgramme">Program natjecanja</a>
       <a class="btn btn-ghost" href="#visitors" data-i18n="hero.ctaVisitors">Za posjetitelje</a>
     </div>
   </div>
+  <img class="hero-zagreb-bottom-img" src="assets/img/zagreb.png" alt="" aria-hidden="true" />
   <a href="#about" class="hero-scroll" aria-label="Scroll"><span></span></a>
 </section>
 
