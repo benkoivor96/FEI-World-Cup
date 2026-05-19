@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FEI World Cup Zagreb 2026 — 70. Lipanjski turnir</title>
 <meta name="description" content="FEI World Cup u preponskom jahanju vraća se u Zagreb. 70. Lipanjski turnir, 11.–14. lipnja 2026., Hipodrom Zagreb." />
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/img/fei-logo.png" />
+<link rel="apple-touch-icon" href="assets/img/fei-logo.png" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="FEI World Cup Zagreb 2026 — 70. Lipanjski turnir" />
+<meta property="og:description" content="FEI World Cup u preponskom jahanju vraća se u Zagreb. 11.–14. lipnja 2026., Hipodrom Zagreb. CSI2*-W · CSI1* · CSIYH1*" />
+<meta property="og:image" content="assets/img/zagreb.png" />
+<meta property="og:url" content="https://feiworldcupzagreb.com/" />
+<meta property="og:locale" content="hr_HR" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="FEI World Cup Zagreb 2026 — 70. Lipanjski turnir" />
+<meta name="twitter:description" content="FEI World Cup u preponskom jahanju vraća se u Zagreb. 11.–14. lipnja 2026., Hipodrom Zagreb." />
+<meta name="twitter:image" content="assets/img/zagreb.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,600&display=swap" />
@@ -800,6 +815,20 @@ strong { font-weight: 700; }
   html { scroll-behavior: auto; }
 }
 
+/* Back to top */
+.back-to-top {
+  position: fixed; bottom: 28px; right: 24px; z-index: 900;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #2293D1; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s, transform .25s;
+  box-shadow: 0 4px 16px rgba(0,0,0,.4);
+}
+.back-to-top.is-visible { opacity: 1; pointer-events: auto; }
+.back-to-top:hover { transform: translateY(-3px); background: #1a78b0; }
+.back-to-top svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
 /* =====================================================
    Section-light — bijele sekcije (tamni tekst)
    ===================================================== */
@@ -915,6 +944,19 @@ strong { font-weight: 700; }
   .brand-line-2 { font-size: 1rem; }
   .hero-zagreb-img { width: clamp(100px, 72vw, 390px); }
 }
+
+@media (max-width: 768px) {
+  .partners-row {
+    gap: 16px 24px;
+  }
+  .partners-row img,
+  .partners-row img[alt="Grad Zagreb"],
+  .partners-row img[alt="Republika Hrvatska"],
+  .partners-row img[alt="Catering Muring"],
+  .partners-row img[alt="Galić"] {
+    height: 36px !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -957,10 +999,10 @@ strong { font-weight: 700; }
   <img class="hero-horse" src="assets/img/horse-70.png" alt="" aria-hidden="true" />
   <div class="container hero-content">
     <div class="hero-partners">
-      <img src="assets/img/fei-logo.png" alt="FEI" />
+      <img src="assets/img/fei-logo.png" alt="FEI – Fédération Equestre Internationale" />
       <img src="assets/img/r&amp;d-logo.png" alt="Riders &amp; Dreams" />
       <img src="assets/img/danube-logo.png" alt="Danube Champions Tour" />
-      <img src="assets/img/hks-logo.png" alt="HKS" />
+      <img src="assets/img/hks-logo.png" alt="HKS – Hrvatski konjički savez" />
       <img src="assets/img/zagreb-logo.png" alt="Zagreb" />
       <img src="assets/img/zks-logo-neg.png" alt="Zagrebački konjički savez" />
     </div>
@@ -1277,7 +1319,7 @@ strong { font-weight: 700; }
     <p class="partners-label" data-i18n="sponsors.partners">Partneri</p>
     <div class="partners-row">
       <a href="https://www.nexe.hr" target="_blank" rel="noopener">
-        <img src="assets/img/logonexe-negativ.png" alt="Nexe" />
+        <img src="assets/img/logonexe-negativ.png" alt="Nexe Group" />
       </a>
       <a href="https://www.janaf.hr" target="_blank" rel="noopener">
         <img src="assets/img/logojanaf-negativ.png" alt="Janaf" />
@@ -1416,9 +1458,24 @@ strong { font-weight: 700; }
   </div>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Natrag na vrh">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
 (function () {
   'use strict';
+
+  /* Back to top */
+  const btt = document.getElementById('backToTop');
+  if (btt) {
+    window.addEventListener('scroll', function () {
+      btt.classList.toggle('is-visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   /* Mobile nav */
   const navToggle = document.getElementById('navToggle');
