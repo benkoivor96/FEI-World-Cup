@@ -11,3 +11,10 @@ launch.json
 WEB.docx
 FEI 26_Key Visual - final.pdf
 ZG-KonjSavez-LOGO-BluueBlackWhite.pdf
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
